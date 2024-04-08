@@ -1,0 +1,26 @@
+{
+    "@@locale": "pt",
+    "play": "Jogar",
+    "make_donation": "Doações",
+    "options": "Opções",
+    "quit": "Sair",
+    "select_your_language": "Selecione seu idioma", 
+    "language": "Idioma",
+    "ofeka_hearth": "Ofeka Earth",
+    "dialogue1": "Ngola: Mayouma, O que te trás por cá?",
+    "dialogue2": "Mayouma: É urgente, Ngola. A nossa aldeia, Iona, enfrenta uma séria ameaça - uma mudança implacável das alterações climáticas. Os nossos rios estão a secar, as nossas árvores a murcha",
+    "dialogue3": "Ngola: Sinto uma mudança nas alterações climaticas. O que é que tem de ser feito?",
+    "dialogue4": "Mayouma: Tu, Ngola, és o nosso farol de esperança. Tens de embarcar numa missão para proteger Iona dos estragos das alterações climáticas. Planta novas árvores para restaurar as nossas florestas, revitaliza os nossos rios para garantir a nossa sobrevivência e educar o nosso povo sobre os perigos que enfrentamos.",
+    "dialogue5": "Ngola: Eu aceito este dever sagrado. Mas como é que posso cumprir sozinho uma tarefa tão monumental?",
+    "dialogue6": "Mayouma: Tu não estarás sozinha, Ngola. Os espíritos dos nossos antepassados vão guiar-te e a resiliência do nosso povo vai apoiar-te. Procura o conhecimento dos sábios e inspira outros a juntarem-se à nossa causa.",
+    "dialogue7": "Ngola: Eu vou atender ao teu apelo, Mayouma. O destino de Iona está nas minhas mãos.",
+    "dialogue8": "Mayouma: Vai em frente, Ngola, e que os espíritos olhem por ti.",
+    "message_tree": "Árvore substituída, As árvores são importantes para a saúde do planeta. Continue a plantar e a proteger as árvores para um futuro mais verde.",
+    "hints": "Dicas",
+    "close": "Fechar",
+    "pause_menu": "Pause",
+    "back_game": "Voltar para o jogo",
+    "game_shop": "Loja"
+
+
+}
