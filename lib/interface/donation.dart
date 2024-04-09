@@ -9,7 +9,9 @@ void main() {
 }
 
 class MyDonations extends StatelessWidget {
-  const MyDonations({Key? key});
+  const MyDonations({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,7 @@ class MyDonations extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 5), // Espaço entre o texto e a descrição
-              Text(
+              const Text(
                 '#MIRABILISGAMESTUDIO',
                 style: TextStyle(
                   color: Colors.black,
@@ -98,7 +100,7 @@ class MyDonations extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 5,
             blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3), // changes position of shadow
           ),
         ],
       ),
@@ -126,7 +128,7 @@ class MyDonations extends StatelessWidget {
 }
 
 class ShopPage extends StatelessWidget {
-  const ShopPage({Key? key});
+  const ShopPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +154,7 @@ class MySocaialCausePage extends StatelessWidget {
   const MySocaialCausePage({
     Key? key,
     required this.title,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -160,12 +162,12 @@ class MySocaialCausePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('SOCIAL CAUSES'),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 20),
-            const Text('BE PART OF REVOLUATION'),
+            SizedBox(height: 20),
+            Text('BE PART OF REVOLUATION'),
           ],
         ),
       ),

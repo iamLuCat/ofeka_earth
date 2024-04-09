@@ -1,3 +1,4 @@
+import 'package:angola_sustentavel/Decorations/reforestation.dart';
 import 'package:bonfire/base/bonfire_game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -37,9 +38,9 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.all(40.0),
+          padding: const EdgeInsets.all(60.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start, // Alterado para start
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
                 width: 40,
@@ -66,11 +67,41 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
           ),
         ),
         Positioned(
-          right: 20, // Alterado para 20
+          right: 20,
+          top: 80,
+          child: GestureDetector(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: Image.asset(
+                    'assets/icones/tree_collecter.png',
+                  ),
+                ),
+                SizedBox(height: 5), // Espaçamento entre o ícone e o texto
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          right: 30.50, // Posicione conforme necessário
+          top: 115, // Posicione conforme necessário
+          child: Text(
+            '${ReforestationTrees.treeCollected}/20',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+            ),
+          ),
+        ),
+        Positioned(
+          right: 20,
           top: 40,
           child: GestureDetector(
             onTap: _showPauseMenu,
-            child: Container(
+            child: SizedBox(
               width: 40,
               height: 40,
               child: Image.asset(
@@ -79,11 +110,11 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
           ),
         ),
         Positioned(
-          right: 60, // Alterado para 20
+          right: 60,
           top: 40,
           child: GestureDetector(
-            onTap: _showHintDialog, // Alterado para _showHintDialog
-            child: Container(
+            onTap: _showHintDialog,
+            child: SizedBox(
               width: 40,
               height: 40,
               child: Image.asset(
@@ -92,37 +123,10 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
           ),
         ),
         Positioned(
-          right: 20,
+          right: 60,
           top: 80,
           child: GestureDetector(
-            // onTap: _showHintDialog, // Alterado para _showHintDialog
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  child: Image.asset(
-                    'assets/icones/tree_collecter.png',
-                  ),
-                ),
-                SizedBox(height: 5), // Espaçamento entre o ícone e o texto
-                Text(
-                  '0/30',
-                  style: TextStyle(
-                      fontSize:
-                          12), // Defina o tamanho do texto conforme necessário
-                ),
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          right: 60, // Alterado para 20
-          top: 80,
-          child: GestureDetector(
-            // onTap: _showHintDialog, // Alterado para _showHintDialog
-            child: Container(
+            child: SizedBox(
               width: 40,
               height: 40,
               child: Image.asset('assets/icones/trash_can.png'),
@@ -160,7 +164,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
                 },
                 child: Text(AppLocalizations.of(context)!.back_game),
               ),
-              SizedBox(height: 10), // Espaçamento entre os botões
+              const SizedBox(height: 10), // Espaçamento entre os botões
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop(); // Fecha o pop-up

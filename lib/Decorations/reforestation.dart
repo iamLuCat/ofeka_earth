@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class ReforestationTrees extends GameDecoration
     with ObjectCollision, TapGesture {
   bool playerIsClose = false;
+  static int treeCollected = 0;
   // static const String messageTree =
   //     "Tree replaced, Trees are important for the health of the planet. Keep planting and protecting trees for a greener future.";
 
@@ -80,7 +81,10 @@ class ReforestationTrees extends GameDecoration
     if (playerIsClose) {
       _showDialog();
       sprite = plantTree;
+      treeCollected++;
     }
+
+    print(treeCollected);
   }
 
   @override
