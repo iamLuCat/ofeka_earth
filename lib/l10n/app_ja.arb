@@ -20,5 +20,12 @@
     "close": "フェシャル",
     "pause_menu": "ポーズ",
     "back_game": "試合に戻る",
-    "game_shop": "ロハ"
+    "donationsbar": "寄付金",
+    "game_shop": "ロハ",
+    "ok":"オーケー",
+    "shop": "ショップ",
+    "make_your_donation": "寄付をする",
+    "shop_page": "ショップページ",
+    "shop_page_title": "このアプリのショップでは、村のサプリメントを購入したり、スキルを向上させたり、キャラクターをカスタマイズすることができます（開発中）。",
+    "social_causes": "社会的原因"
 }

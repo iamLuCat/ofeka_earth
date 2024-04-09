@@ -1,5 +1,6 @@
 import 'package:add_to_google_wallet/widgets/add_to_google_wallet_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uuid/uuid.dart';
 
 class MyWallet extends StatelessWidget {
@@ -10,7 +11,7 @@ class MyWallet extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('MAKE YOUR DONATION'),
+          title: Text(AppLocalizations.of(context)!.make_your_donation),
           // Adicione o botão de voltar aqui
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),

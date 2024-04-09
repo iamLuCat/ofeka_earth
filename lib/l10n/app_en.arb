@@ -20,5 +20,12 @@
     "close": "Fechar",
     "pause_menu": "Pause Menu",
     "back_game": "Back to game",
-    "game_shop": "GameShop"
+    "game_shop": "GameShop",
+    "donationsbar": "DONATIONS",
+    "shop": "SHOP",
+    "make_your_donation": "MAKE YOUR DONATION",
+    "shop_page": "SHOP PAGE",
+    "shop_page_title": "This is the store of our application, here you could buy supplements for the village, improve your skills and customize your character (UNDER DEVELOPMENT)",
+    "social_causes": "SOCIAL CAUSES"
+
 }

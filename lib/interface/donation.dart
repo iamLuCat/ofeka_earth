@@ -1,5 +1,5 @@
 import 'package:angola_sustentavel/interface/pay_wallet.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,164 +9,163 @@ void main() {
 }
 
 class MyDonations extends StatelessWidget {
-  const MyDonations({super.key});
+  const MyDonations({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Donations'),
+        title: Text(AppLocalizations.of(context)!.donationsbar),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 10), // Espaço entre o título e o cartão
-            GestureDetector(
-              onTap: () {
-                // Navegar para a página de doações com os textos
-                Navigator.push(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 10), // Espaço entre o título e o cartão
+              GestureDetector(
+                onTap: () {
+                  // Navegar para a página de doações com os textos
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyWallet()),
+                  );
+                },
+                child: _buildCard(
                   context,
-                  MaterialPageRoute(builder: (context) => const MyWallet()),
-                );
-              },
-              child: Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/icones/donate.png',
-                      width: 70,
-                      height: 70,
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'DONATIONS',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                  'assets/icones/donate.png',
+                  AppLocalizations.of(context)!.donationsbar,
                 ),
               ),
-            ),
-            const SizedBox(height: 20), // Espaço entre os cartões
-            GestureDetector(
-              onTap: () {
-                // Navegar para a página de loja
-                Navigator.push(
+              GestureDetector(
+                onTap: () {
+                  // Navegar para a página de loja
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MySocaialCausePage(
+                              title: 'Social Causes',
+                            )),
+                  );
+                },
+                child: _buildCard(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShopPage()),
-                );
-              },
-              child: Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/icones/shop.png',
-                      width: 70,
-                      height: 70,
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'SHOP',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                  'assets/icones/handshakecare.png',
+                  AppLocalizations.of(context)!.social_causes,
                 ),
               ),
-            ),
-          ],
+              GestureDetector(
+                onTap: () {
+                  // Navegar para a página de loja
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ShopPage()),
+                  );
+                },
+                child: _buildCard(
+                  context,
+                  'assets/icones/store.png',
+                  AppLocalizations.of(context)!.shop,
+                ),
+              ),
+              const SizedBox(height: 5), // Espaço entre o texto e a descrição
+              Text(
+                '#MIRABILISGAMESTUDIO',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildCard(BuildContext context, String imagePath, String title) {
+    return Container(
+      width: 200,
+      height: 200,
+      margin: const EdgeInsets.only(
+          bottom: 20), // Adicionando margem apenas na parte inferior do cartão
+      decoration: BoxDecoration(
+        color: const Color(0xFF202020),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            imagePath,
+            width: 70,
+            height: 70,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
 class ShopPage extends StatelessWidget {
-  const ShopPage({super.key});
+  const ShopPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shop Page'),
+        title: Text(AppLocalizations.of(context)!.shop_page),
       ),
-      body: const Center(
-        child: Text('This is the shop page'),
+      body: Center(
+        child: Center(
+          child: Text(
+            AppLocalizations.of(context)!.shop_page_title,
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }
 }
 
-class MyDonationPage extends StatelessWidget {
+class MySocaialCausePage extends StatelessWidget {
   final String title;
-  final String subtitle;
 
-  const MyDonationPage(
-      {super.key, required this.title, required this.subtitle});
+  const MySocaialCausePage({
+    Key? key,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Donation Page'),
+        title: const Text('SOCIAL CAUSES'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Título e subtítulo passados como argumentos
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              subtitle,
-              textAlign: TextAlign.center,
-            ),
             const SizedBox(height: 20),
-            const Text('This is the donation page'),
+            const Text('BE PART OF REVOLUATION'),
           ],
         ),
       ),

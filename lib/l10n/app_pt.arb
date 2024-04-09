@@ -20,7 +20,13 @@
     "close": "Fechar",
     "pause_menu": "Pause",
     "back_game": "Voltar para o jogo",
-    "game_shop": "Loja"
+    "donationsbar": "DOAÇÕES",
+    "game_shop": "Loja",
+    "shop": "LOJA",
+    "make_your_donation": "FAÇA SUA DOAÇÃO",
+    "shop_page": "Loja",
+    "shop_page_title": "Está é a loja de nossa aplicação, aqui você poderá comprar suplementos para aldeia, melhorar suas hablidades e personalizar o seu personagem (EM DESENVOLVIMENTO)",
+    "social_causes": "CAUSAS SOCIAIS"
 
 
 }
