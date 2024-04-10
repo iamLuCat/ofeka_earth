@@ -1,4 +1,5 @@
 import 'package:angola_sustentavel/interface/pay_wallet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class DesertificationSuthernAngola extends StatelessWidget {
@@ -7,10 +8,29 @@ class DesertificationSuthernAngola extends StatelessWidget {
     // Obtendo as dimensões da tela
     final Size screenSize = MediaQuery.of(context).size;
 
+    String desertificationImage;
+
+    String currentLanguage = Localizations.localeOf(context).languageCode;
+
+    switch (currentLanguage) {
+      case 'en':
+        desertificationImage = 'assets/icones/desertification_iona_en.png';
+        break;
+      case 'pt':
+        desertificationImage = 'assets/icones/desertification_iona_pt.png';
+        break;
+      case 'ja':
+        desertificationImage = 'assets/icones/desertification_iona_ja.png';
+        break;
+      default:
+        desertificationImage = 'assets/icones/desertification_iona_en.png';
+        break;
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('SOCIAL CAUSES'),
+          title: Text(AppLocalizations.of(context)!.social_causes),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -26,7 +46,7 @@ class DesertificationSuthernAngola extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                 child: Text(
-                  "Hi, and welcome to the Ofeka Earth Project!",
+                  AppLocalizations.of(context)!.t1,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -37,7 +57,7 @@ class DesertificationSuthernAngola extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "We invite you to join us in the fight for a more sustainable future.",
+                  AppLocalizations.of(context)!.t2,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -48,7 +68,7 @@ class DesertificationSuthernAngola extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "Please follow the instructions of our game, and take the chance to learn a little about the Iona region.",
+                  AppLocalizations.of(context)!.t3,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -59,7 +79,7 @@ class DesertificationSuthernAngola extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "MAKE YOUR DONATION",
+                  AppLocalizations.of(context)!.t4,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
@@ -81,7 +101,7 @@ class DesertificationSuthernAngola extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Image.asset(
-                          "assets/icones/iona_wellcome.png",
+                          desertificationImage,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -93,7 +113,7 @@ class DesertificationSuthernAngola extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        "The Village Of Iona is located in the southern region of Namibe, a province of the Republic of Angola. This entire region of the African continent, faces desertification due to deforestation, unsustainable agricultural practices and climate change. The lack of rainfall and arid soils is putting the lives of local communities at risk, since they rely a lot on cattle breeding as part of their culture and, as a consequence, have to walk long distances in search of pasture. This poses serious threats to their lives in many different ways: low food reserves, malnutrition, deseases and illiteracy because children are kept out of school to help with cattle breading. There is an urgent need to promote reforestation, sustainable agricultural practices, and access to clean water, and Ngola needs you to prevent the effects of drought and help the communities of Iona to overcome these challenges.",
+                        AppLocalizations.of(context)!.t6,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -113,7 +133,7 @@ class DesertificationSuthernAngola extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    "MAKE DONATION",
+                    AppLocalizations.of(context)!.t4,
                     style: TextStyle(
                       color: Colors.white,
                     ), // Definindo a cor do texto

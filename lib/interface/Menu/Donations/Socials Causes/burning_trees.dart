@@ -1,4 +1,5 @@
 import 'package:angola_sustentavel/interface/pay_wallet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class BurningTrees extends StatelessWidget {
@@ -7,10 +8,29 @@ class BurningTrees extends StatelessWidget {
     // Obtendo as dimensões da tela
     final Size screenSize = MediaQuery.of(context).size;
 
+    String burninTreesImage;
+
+    String currentLanguage = Localizations.localeOf(context).languageCode;
+
+    switch (currentLanguage) {
+      case 'en':
+        burninTreesImage = 'assets/icones/burnin_trees_en.png';
+        break;
+      case 'pt':
+        burninTreesImage = 'assets/icones/burnin_trees_pt.png';
+        break;
+      case 'ja':
+        burninTreesImage = 'assets/icones/burnin_trees_ja.png';
+        break;
+      default:
+        burninTreesImage = 'assets/icones/burnin_trees_en.png';
+        break;
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('SOCIAL CAUSES'),
+          title: Text(AppLocalizations.of(context)!.social_causes),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -26,7 +46,7 @@ class BurningTrees extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                 child: Text(
-                  "Hi, and welcome to the Ofeka Earth Project!",
+                  AppLocalizations.of(context)!.t1,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -37,7 +57,7 @@ class BurningTrees extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "We invite you to join us in the fight for a more sustainable future.",
+                  AppLocalizations.of(context)!.t2,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -48,7 +68,7 @@ class BurningTrees extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "Please follow the instructions of our game, and take the chance to learn a little about the Iona region.",
+                  AppLocalizations.of(context)!.t3,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -59,7 +79,7 @@ class BurningTrees extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "MAKE YOUR DONATION",
+                  AppLocalizations.of(context)!.t4,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
@@ -81,7 +101,7 @@ class BurningTrees extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Image.asset(
-                          "assets/icones/burnin_trees.png",
+                          burninTreesImage,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -93,7 +113,7 @@ class BurningTrees extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        "Deforestation in Angola is not happening just due to natural causes: There is a battle that we need to fight, against the cutting and burning of trees, which is being done to increase agricultural fields and to produce coal. Join Us to Protect Our Trees And Prevent threatned areas from this massive deforestation! Cutting And Burning Trees Threatens Our Environment And Directly Impacts Vulnerable Communities. With Your Help, We Can Make A Difference: Contribute To Our Campaign Today, And Help Preserve Forests While Supporting Communities In Need. Together, We Can Build A Greener, More Sustainable Future For Everyone.",
+                        AppLocalizations.of(context)!.t8,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -113,7 +133,7 @@ class BurningTrees extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    "MAKE DONATION",
+                    AppLocalizations.of(context)!.t4,
                     style: TextStyle(
                       color: Colors.white,
                     ), // Definindo a cor do texto

@@ -160,10 +160,21 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pop(); // Fecha o pop-up
-                  // Implemente a lógica para continuar o jogo
+                  //Close the pop up
+                  Navigator.of(context).pop();
                 },
                 child: Text(AppLocalizations.of(context)!.back_game),
+              ),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => MenuGame()),
+                  // );
+                },
+                child: Text(AppLocalizations.of(context)!.back_menu),
               ),
               const SizedBox(height: 10), // Espaçamento entre os botões
               ElevatedButton(

@@ -1,4 +1,5 @@
 import 'package:angola_sustentavel/interface/pay_wallet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class PlasticSubstances extends StatelessWidget {
@@ -7,10 +8,29 @@ class PlasticSubstances extends StatelessWidget {
     // Obtendo as dimensões da tela
     final Size screenSize = MediaQuery.of(context).size;
 
+    String trashImage;
+
+    String currentLanguage = Localizations.localeOf(context).languageCode;
+
+    switch (currentLanguage) {
+      case 'en':
+        trashImage = 'assets/icones/dealing_with_trash_en.png';
+        break;
+      case 'pt':
+        trashImage = 'assets/icones/dealing_with_trash_pt.png';
+        break;
+      case 'ja':
+        trashImage = 'assets/icones/dealing_with_trash_ja.png';
+        break;
+      default:
+        trashImage = 'assets/icones/dealing_with_trash_en.png';
+        break;
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('SOCIAL CAUSES'),
+          title: Text(AppLocalizations.of(context)!.social_causes),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -26,7 +46,7 @@ class PlasticSubstances extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                 child: Text(
-                  "Hi, and welcome to the Ofeka Earth Project!",
+                  AppLocalizations.of(context)!.t1,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -37,7 +57,7 @@ class PlasticSubstances extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "We invite you to join us in the fight for a more sustainable future.",
+                  AppLocalizations.of(context)!.t2,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -48,7 +68,7 @@ class PlasticSubstances extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "Please follow the instructions of our game, and take the chance to learn a little about the Iona region.",
+                  AppLocalizations.of(context)!.t3,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -59,7 +79,7 @@ class PlasticSubstances extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "MAKE YOUR DONATION",
+                  AppLocalizations.of(context)!.t4,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
@@ -81,7 +101,7 @@ class PlasticSubstances extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Image.asset(
-                          "assets/icones/namibe_trash.png",
+                          trashImage,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -93,7 +113,7 @@ class PlasticSubstances extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        "Plastic is invading schools, neighbourhoods, beaches and rivers in Angola. Local people need to become aware of the consequences, and engage themselves in the quest to reduce this environmental threat. Help us make a difference! With just 1 USD, you can support our campaign to help children in need and receive a leaflet, t-shirt or other gift in exchange. Join us in the fight against plastic pollution and in promoting the education and well-being of angolan children. Every contribution counts. Join us today!",
+                        AppLocalizations.of(context)!.t7,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -113,7 +133,7 @@ class PlasticSubstances extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    "MAKE DONATION",
+                    AppLocalizations.of(context)!.t4,
                     style: TextStyle(
                       color: Colors.white,
                     ), // Definindo a cor do texto

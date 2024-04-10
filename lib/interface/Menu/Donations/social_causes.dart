@@ -1,18 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:angola_sustentavel/interface/Menu/Donations/Socials%20Causes/burning_trees.dart';
 import 'package:angola_sustentavel/interface/Menu/Donations/Socials%20Causes/desertification_suthern_angola.dart';
 import 'package:angola_sustentavel/interface/Menu/Donations/Socials%20Causes/plastic_substances.dart';
-import 'package:flutter/material.dart';
 
 class DonationCauses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Obtendo as dimensões da tela
     final Size screenSize = MediaQuery.of(context).size;
+
+    String desertificationImage;
+    String trashImage;
+    String burninTreesImage;
+
+    String currentLanguage = Localizations.localeOf(context).languageCode;
+
+    switch (currentLanguage) {
+      case 'en':
+        desertificationImage = 'assets/icones/desertification_iona_en.png';
+        trashImage = 'assets/icones/dealing_with_trash_en.png';
+        burninTreesImage = 'assets/icones/burnin_trees_en.png';
+        break;
+      case 'pt':
+        desertificationImage = 'assets/icones/desertification_iona_pt.png';
+        trashImage = 'assets/icones/dealing_with_trash_pt.png';
+        burninTreesImage = 'assets/icones/burnin_trees_pt.png';
+        break;
+      case 'ja':
+        desertificationImage = 'assets/icones/desertification_iona_ja.png';
+        trashImage = 'assets/icones/dealing_with_trash_ja.png';
+        burninTreesImage = 'assets/icones/burnin_trees_ja.png';
+        break;
+      default:
+        desertificationImage = 'assets/icones/desertification_iona_en.png';
+        trashImage = 'assets/icones/dealing_with_trash_en.png';
+        burninTreesImage = 'assets/icones/burnin_trees_en.png';
+        break;
+    }
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('SOCIAL CAUSES'),
+          title: Text(AppLocalizations.of(context)!.social_causes),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -24,11 +53,10 @@ class DonationCauses extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // Titles
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                 child: Text(
-                  "Hi, and welcome to the Ofeka Earth Project!",
+                  AppLocalizations.of(context)!.t1,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -39,7 +67,7 @@ class DonationCauses extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "We invite you to join us in the fight for a more sustainable future.",
+                  AppLocalizations.of(context)!.t2,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -50,7 +78,7 @@ class DonationCauses extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "Please follow the instructions of our game, and take the chance to learn a little about the Iona region.",
+                  AppLocalizations.of(context)!.t3,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -61,7 +89,7 @@ class DonationCauses extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "MAKE YOUR DONATION",
+                  AppLocalizations.of(context)!.t4,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
@@ -69,43 +97,42 @@ class DonationCauses extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 8),
-              // Container with image and text
               Column(
                 children: [
                   Stack(
                     alignment: Alignment.center,
                     children: <Widget>[
                       Container(
-                        width: screenSize.width - 32, // 16 de cada lado
+                        width: screenSize.width - 32,
                         height: 200,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Image.asset(
-                          "assets/icones/iona_wellcome.png",
+                          desertificationImage,
                           fit: BoxFit.cover,
                         ),
                       ),
                     ],
                   ),
                   SizedBox(height: 16),
-                  // Green button
                   Center(
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  DesertificationSuthernAngola()),
+                            builder: (context) =>
+                                DesertificationSuthernAngola(),
+                          ),
                         );
                       },
                       child: Text(
-                        "View all information",
+                        AppLocalizations.of(context)!.t5,
                         style: TextStyle(
                           color: Colors.black,
-                        ), // Definindo a cor do texto
+                        ),
                       ),
                       style: ButtonStyle(
                         backgroundColor:
@@ -127,35 +154,35 @@ class DonationCauses extends StatelessWidget {
                     alignment: Alignment.center,
                     children: <Widget>[
                       Container(
-                        width: screenSize.width - 32, // 16 de cada lado
+                        width: screenSize.width - 32,
                         height: 200,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Image.asset(
-                          "assets/icones/namibe_trash.png",
+                          trashImage,
                           fit: BoxFit.cover,
                         ),
                       ),
                     ],
                   ),
                   SizedBox(height: 16),
-                  // Green button
                   Center(
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PlasticSubstances()),
+                            builder: (context) => PlasticSubstances(),
+                          ),
                         );
                       },
                       child: Text(
-                        "View all information",
+                        AppLocalizations.of(context)!.t5,
                         style: TextStyle(
                           color: Colors.black,
-                        ), // Definindo a cor do texto
+                        ),
                       ),
                       style: ButtonStyle(
                         backgroundColor:
@@ -177,35 +204,35 @@ class DonationCauses extends StatelessWidget {
                     alignment: Alignment.center,
                     children: <Widget>[
                       Container(
-                        width: screenSize.width - 32, // 16 de cada lado
+                        width: screenSize.width - 32,
                         height: 200,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Image.asset(
-                          "assets/icones/burnin_trees.png",
+                          burninTreesImage,
                           fit: BoxFit.cover,
                         ),
                       ),
                     ],
                   ),
                   SizedBox(height: 16),
-                  // Green button
                   Center(
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BurningTrees()),
+                            builder: (context) => BurningTrees(),
+                          ),
                         );
                       },
                       child: Text(
-                        "View all information",
+                        AppLocalizations.of(context)!.t5,
                         style: TextStyle(
                           color: Colors.black,
-                        ), // Definindo a cor do texto
+                        ),
                       ),
                       style: ButtonStyle(
                         backgroundColor:
@@ -225,7 +252,7 @@ class DonationCauses extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                      ), // Definindo a cor do texto
+                      ),
                     ),
                   ),
                 ],
