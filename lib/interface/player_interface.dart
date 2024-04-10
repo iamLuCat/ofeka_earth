@@ -10,6 +10,7 @@ class PlayerInterface extends StatefulWidget {
   const PlayerInterface({Key? key, required this.game}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PlayerInterfaceState createState() => _PlayerInterfaceState();
 }
 

@@ -1,4 +1,5 @@
 import 'package:angola_sustentavel/interface/pay_wallet.dart';
+import 'package:angola_sustentavel/interface/Menu/Donations/social_causes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -44,10 +45,7 @@ class MyDonations extends StatelessWidget {
                   // Navegar para a página de loja
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const MySocaialCausePage(
-                              title: 'Social Causes',
-                            )),
+                    MaterialPageRoute(builder: (context) => DonationCauses()),
                   );
                 },
                 child: _buildCard(
