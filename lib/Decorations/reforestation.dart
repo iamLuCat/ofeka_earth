@@ -7,9 +7,7 @@ import 'package:flutter/material.dart';
 class ReforestationTrees extends GameDecoration
     with ObjectCollision, TapGesture {
   bool playerIsClose = false;
-  static int treeCollected = 0;
-  // static const String messageTree =
-  //     "Tree replaced, Trees are important for the health of the planet. Keep planting and protecting trees for a greener future.";
+  static ValueNotifier<int> treeCollected = ValueNotifier<int>(0);
 
   Sprite? removeStem, plantTree;
 
@@ -32,15 +30,12 @@ class ReforestationTrees extends GameDecoration
     );
   }
 
-  //GameMecachincs
-
   @override
   void update(double dt) {
     seeComponentType<PlayerHuman>(
       observed: (player) {
         if (!playerIsClose) {
           playerIsClose = true;
-          // _showDialog();
         }
       },
       notObserved: () {
@@ -60,39 +55,46 @@ class ReforestationTrees extends GameDecoration
 
   void _showDialog() {
     showDialog(
-        context: context,
-        builder: (_) {
-          return AlertDialog(
-            content: Text(AppLocalizations.of(context)!.message_tree),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text('OK'))
-            ],
-          );
-        });
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          content: Text(AppLocalizations.of(context)!.message_tree),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('OK'),
+            )
+          ],
+        );
+      },
+    );
   }
 
-  //TouchFunctions
   @override
   void onTap() {
     if (playerIsClose) {
       _showDialog();
       sprite = plantTree;
-      treeCollected++;
+      treeCollected.value++;
     }
 
-    print(treeCollected);
+    print(treeCollected.value);
   }
 
   @override
-  void onTapCancel() {}
+  void onTapCancel() {
+    // TODO: implement onTapCancel
+  }
 
   @override
-  void onTapDown(int pointer, Offset position) {}
+  void onTapDown(int pointer, Offset position) {
+    // TODO: implement onTapDown
+  }
 
   @override
-  void onTapUp(int pointer, Offset position) {}
+  void onTapUp(int pointer, Offset position) {
+    // TODO: implement onTapUp
+  }
 }

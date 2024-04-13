@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:angola_sustentavel/Decorations/decoration_sprite_sheet.dart';
 import 'package:bonfire/bonfire.dart';
 
-class TrashCollectables extends GameDecoration with DragGesture {
+class TrashCollectables extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones,
@@ -13,7 +14,8 @@ class TrashCollectables extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables02 extends GameDecoration with DragGesture {
+class TrashCollectables02 extends GameDecoration
+    with DragGesture, ObjectCollision {
   bool playerIsClose = false;
   TrashCollectables02(Vector2 position)
       : super.withSprite(
@@ -24,7 +26,8 @@ class TrashCollectables02 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables03 extends GameDecoration with DragGesture {
+class TrashCollectables03 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables03(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones03,
@@ -34,7 +37,8 @@ class TrashCollectables03 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables04 extends GameDecoration with DragGesture {
+class TrashCollectables04 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables04(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones04,
@@ -44,7 +48,8 @@ class TrashCollectables04 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables05 extends GameDecoration with DragGesture {
+class TrashCollectables05 extends GameDecoration
+    with DragGesture, ObjectCollision {
   Sprite? trashIcone_05;
   bool playerIsClose = false;
   TrashCollectables05(Vector2 position)
@@ -56,7 +61,8 @@ class TrashCollectables05 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables06 extends GameDecoration with DragGesture {
+class TrashCollectables06 extends GameDecoration
+    with DragGesture, ObjectCollision {
   Sprite? trashIcone_06;
   bool playerIsClose = false;
   TrashCollectables06(Vector2 position)
@@ -68,7 +74,8 @@ class TrashCollectables06 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables07 extends GameDecoration with DragGesture {
+class TrashCollectables07 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables07(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones07,
@@ -78,7 +85,8 @@ class TrashCollectables07 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables08 extends GameDecoration with DragGesture {
+class TrashCollectables08 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables08(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones08,
@@ -88,7 +96,8 @@ class TrashCollectables08 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables09 extends GameDecoration with DragGesture {
+class TrashCollectables09 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables09(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones09,
@@ -98,7 +107,8 @@ class TrashCollectables09 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables10 extends GameDecoration with DragGesture {
+class TrashCollectables10 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables10(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones10,
@@ -108,7 +118,8 @@ class TrashCollectables10 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables11 extends GameDecoration with DragGesture {
+class TrashCollectables11 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables11(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones11,
@@ -118,7 +129,8 @@ class TrashCollectables11 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables12 extends GameDecoration with DragGesture {
+class TrashCollectables12 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables12(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones12,
@@ -151,7 +163,8 @@ class TrashCollectables17 extends GameDecoration with ObjectCollision {
   }
 }
 
-class TrashCollectables18 extends GameDecoration with DragGesture {
+class TrashCollectables18 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables18(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones18,
@@ -161,7 +174,8 @@ class TrashCollectables18 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables19 extends GameDecoration with DragGesture {
+class TrashCollectables19 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables19(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones19,
@@ -171,7 +185,8 @@ class TrashCollectables19 extends GameDecoration with DragGesture {
         );
 }
 
-class TrashCollectables20 extends GameDecoration with DragGesture {
+class TrashCollectables20 extends GameDecoration
+    with DragGesture, ObjectCollision {
   TrashCollectables20(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.trashIcones20,
@@ -179,4 +194,10 @@ class TrashCollectables20 extends GameDecoration with DragGesture {
           width: 18,
           height: 21,
         );
+
+  @override
+  void onCollision(GameComponent component, bool active) {
+    // TODO: implement onCollision
+    super.onCollision(component, active);
+  }
 }

@@ -7,10 +7,10 @@ import 'dart:async' as async;
 class PlayerInterface extends StatefulWidget {
   static const overlayKey = 'playerInterface';
   final BonfireGame game;
+
   const PlayerInterface({Key? key, required this.game}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _PlayerInterfaceState createState() => _PlayerInterfaceState();
 }
 
@@ -39,7 +39,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.all(60.0),
+          padding: const EdgeInsets.all(45.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -81,20 +81,41 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
                     'assets/icones/tree_collecter.png',
                   ),
                 ),
-                SizedBox(height: 5), // Espaçamento entre o ícone e o texto
+                SizedBox(height: 5),
               ],
             ),
           ),
         ),
         Positioned(
-          right: 30.50, // Posicione conforme necessário
-          top: 115, // Posicione conforme necessário
-          child: Text(
-            '${ReforestationTrees.treeCollected}/20',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-            ),
+          right: 28,
+          top: 115,
+          child: ValueListenableBuilder<int>(
+            valueListenable: ReforestationTrees.treeCollected,
+            builder: (context, value, child) {
+              return Text(
+                '$value/20',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                ),
+              );
+            },
+          ),
+        ),
+        Positioned(
+          right: 68,
+          top: 115,
+          child: ValueListenableBuilder<int>(
+            valueListenable: ReforestationTrees.treeCollected,
+            builder: (context, value, child) {
+              return Text(
+                '0/20',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                ),
+              );
+            },
           ),
         ),
         Positioned(
@@ -105,8 +126,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
             child: SizedBox(
               width: 40,
               height: 40,
-              child: Image.asset(
-                  'assets/icones/pause.png'), // Referência ao ícone local
+              child: Image.asset('assets/icones/pause.png'),
             ),
           ),
         ),
@@ -118,8 +138,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
             child: SizedBox(
               width: 40,
               height: 40,
-              child: Image.asset(
-                  'assets/icones/hint.png'), // Referência ao ícone local
+              child: Image.asset('assets/icones/hint.png'),
             ),
           ),
         ),
@@ -160,7 +179,6 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  //Close the pop up
                   Navigator.of(context).pop();
                 },
                 child: Text(AppLocalizations.of(context)!.back_game),
@@ -169,18 +187,13 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop();
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => MenuGame()),
-                  // );
                 },
                 child: Text(AppLocalizations.of(context)!.back_menu),
               ),
-              const SizedBox(height: 10), // Espaçamento entre os botões
+              const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pop(); // Fecha o pop-up
-                  // Implemente a lógica para abrir a loja do jogo
+                  Navigator.of(context).pop();
                 },
                 child: Text(AppLocalizations.of(context)!.game_shop),
               ),
@@ -195,7 +208,6 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
     String imagePath;
     String currentLanguage = Localizations.localeOf(context).languageCode;
 
-    // Determina qual imagem carregar com base no idioma atual
     switch (currentLanguage) {
       case 'en':
         imagePath = 'assets/icones/game_hints_en.png';
@@ -207,8 +219,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
         imagePath = 'assets/icones/game_hints_ja.png';
         break;
       default:
-        imagePath =
-            'assets/icones/game_hints.png'; // Use a imagem padrão caso o idioma não seja encontrado
+        imagePath = 'assets/icones/game_hints.png';
     }
 
     showDialog(
@@ -220,7 +231,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Fecha o pop-up
+                Navigator.of(context).pop();
               },
               child: Text(AppLocalizations.of(context)!.close),
             ),

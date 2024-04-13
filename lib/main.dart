@@ -6,7 +6,7 @@ import 'package:angola_sustentavel/Player/player_human.dart';
 import 'package:angola_sustentavel/interface/Menu/Donations/donation.dart';
 // import 'package:angola_sustentavel/interface/pay_wallet.dart';
 import 'package:angola_sustentavel/interface/player_interface.dart';
-import 'package:angola_sustentavel/splach_screen_game.dart';
+import 'package:angola_sustentavel/interface/splach_screen_game.dart';
 import 'package:bonfire/bonfire.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
