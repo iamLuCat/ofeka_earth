@@ -136,7 +136,7 @@ class MyHomePage extends StatelessWidget {
         sizeMovementWindow: const Size(tileSize * 3, tileSize * 3),
         zoom: 1.5,
       ),
-      // showCollisionArea: true,
+      showCollisionArea: true,
     );
   }
 }

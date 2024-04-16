@@ -49,4 +49,11 @@ class PlayerHuman extends SimplePlayer with ObjectCollision {
       width: 12 * 1.5,
     );
   }
+
+  @override
+  void onCollision(GameComponent component, bool active) {
+    print(active);
+    print(component);
+    super.onCollision(component, active);
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:angola_sustentavel/Decorations/reforestation.dart';
+import 'package:angola_sustentavel/game_menu.dart';
 import 'package:bonfire/base/bonfire_game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -186,7 +187,12 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  // Navigator.of(context).pushReplacement(
+
+                  //   MaterialPageRoute(
+                  //     builder: (BuildContext context) => MenuGame(),
+                  //   ),
+                  // );
                 },
                 child: Text(AppLocalizations.of(context)!.back_menu),
               ),

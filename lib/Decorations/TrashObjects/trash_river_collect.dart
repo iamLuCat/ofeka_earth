@@ -11,7 +11,40 @@ class TrashCollectables extends GameDecoration
           position: position,
           width: 9,
           height: 32,
-        );
+        ) {
+    setupCollision(
+      CollisionConfig(
+        collisions: [
+          CollisionArea.rectangle(
+            size: const Size(20, 27),
+            align: Vector2(0, 5),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void onMoveDrag(int pointer, Offset position) {
+    super.onMoveDrag(pointer, position);
+
+    // Verificar se a posição do componente está sobreposta à posição do caixote de lixo
+    if (isOverlappingWithTrashCan(position)) {
+      print('Componente está sobreposta a um caixote de lixo!');
+    }
+  }
+
+  bool isOverlappingWithTrashCan(Offset position) {
+    // Verificar se a posição do componente está sobreposta à posição do caixote de lixo
+    // Por exemplo, você pode comparar as posições x e y do componente com as do caixote de lixo
+    // Suponha que as posições dos caixotes de lixo estejam armazenadas em uma lista chamada trashCans
+    var trashCans;
+    for (var trashCan in trashCans) {
+      if (this.position.overlaps(trashCan.position & trashCan.size)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 class TrashCollectables02 extends GameDecoration
@@ -194,10 +227,4 @@ class TrashCollectables20 extends GameDecoration
           width: 18,
           height: 21,
         );
-
-  @override
-  void onCollision(GameComponent component, bool active) {
-    // TODO: implement onCollision
-    super.onCollision(component, active);
-  }
 }
