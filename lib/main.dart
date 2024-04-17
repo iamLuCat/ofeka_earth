@@ -108,7 +108,7 @@ class MyHomePage extends StatelessWidget {
           'trash11': (properties) => TrashCollectables11(properties.position),
           'trash12': (properties) => TrashCollectables12(properties.position),
           //GarbageColactbleIcone
-          'garbage': (properties) => TrashCollectables17(properties.position),
+          'garbage': (properties) => TrashCan(properties.position),
           'trash18': (properties) => TrashCollectables18(properties.position),
           'trash19': (properties) => TrashCollectables19(properties.position),
           'trash20': (properties) => TrashCollectables20(properties.position),
@@ -136,7 +136,7 @@ class MyHomePage extends StatelessWidget {
         sizeMovementWindow: const Size(tileSize * 3, tileSize * 3),
         zoom: 1.5,
       ),
-      showCollisionArea: true,
+      // showCollisionArea: true,
     );
   }
 }

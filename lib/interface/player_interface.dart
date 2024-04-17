@@ -1,5 +1,5 @@
+import 'package:angola_sustentavel/Decorations/TrashObjects/trash_river_collect.dart';
 import 'package:angola_sustentavel/Decorations/reforestation.dart';
-import 'package:angola_sustentavel/game_menu.dart';
 import 'package:bonfire/base/bonfire_game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -107,10 +107,10 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
           right: 68,
           top: 115,
           child: ValueListenableBuilder<int>(
-            valueListenable: ReforestationTrees.treeCollected,
+            valueListenable: trashcollected_count,
             builder: (context, value, child) {
               return Text(
-                '0/20',
+                '$value/20',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 12,
