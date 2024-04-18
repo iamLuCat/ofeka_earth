@@ -180,6 +180,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
             children: [
               ElevatedButton(
                 onPressed: () {
+                  //Create a logic to back to the menu page
                   Navigator.of(context).pop();
                 },
                 child: Text(AppLocalizations.of(context)!.back_game),
@@ -187,12 +188,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  // Navigator.of(context).pushReplacement(
-
-                  //   MaterialPageRoute(
-                  //     builder: (BuildContext context) => MenuGame(),
-                  //   ),
-                  // );
+                  Navigator.popAndPushNamed(context, '/mainmenu');
                 },
                 child: Text(AppLocalizations.of(context)!.back_menu),
               ),
@@ -246,4 +242,38 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
       },
     );
   }
+}
+
+@override
+Widget build(BuildContext context) {
+  // ignore: deprecated_member_use
+  return WillPopScope(
+    onWillPop: () => _showExitConfirmationDialog(context),
+    child: Stack(
+      children: [
+        // ... other UI elements of PlayerInterface
+      ],
+    ),
+  );
+}
+
+Future<bool> _showExitConfirmationDialog(BuildContext context) async {
+  final localization = AppLocalizations.of(context)!;
+  return await showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text("Exit the game"),
+      content: Text("Areu sure that you want to exit"),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context, false),
+          child: Text("No"),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(context, true),
+          child: Text("Yes"),
+        ),
+      ],
+    ),
+  );
 }

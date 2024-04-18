@@ -77,16 +77,16 @@ final String _examplePass = """
             "id": "$_issuerId.$_passId",
             "classId": "$_issuerId.$_passClass",
             "genericType": "GENERIC_TYPE_UNSPECIFIED",
-            "hexBackgroundColor": "#4285f4",
+            "hexBackgroundColor": "#7B060A",
             "logo": {
               "sourceUri": {
-                "uri": "https://storage.googleapis.com/wallet-lab-tools-codelab-artifacts-public/pass_google_logo.jpg"
+                "uri": "https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/002/807/402/datas/medium.jpg"
               }
             },
             "cardTitle": {
               "defaultValue": {
                 "language": "en",
-                "value": "Google I/O '22 [DEMO ONLY]"
+                "value": "Ofeka Earth Project Game"
               }
             },
             "subheader": {
@@ -98,7 +98,7 @@ final String _examplePass = """
             "header": {
               "defaultValue": {
                 "language": "en",
-                "value": "Alex McJacobs"
+                "value": "Replaciment of trees"
               }
             },
             "barcode": {
@@ -107,12 +107,12 @@ final String _examplePass = """
             },
             "heroImage": {
               "sourceUri": {
-                "uri": "https://storage.googleapis.com/wallet-lab-tools-codelab-artifacts-public/google-io-hero-demo-only.jpg"
+                "uri": "https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/002/807/402/datas/medium.jpg"
               }
             },
             "textModulesData": [
               {
-                "header": "POINTS",
+                "header": "DONATION",
                 "body": "1234",
                 "id": "points"
               }

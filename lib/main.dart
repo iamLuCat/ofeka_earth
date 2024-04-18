@@ -3,6 +3,7 @@ import 'package:angola_sustentavel/Decorations/TrashObjects/trash_river_collect.
 import 'package:angola_sustentavel/Decorations/reforestation.dart';
 import 'package:angola_sustentavel/NPCS/ngola_friends.dart';
 import 'package:angola_sustentavel/Player/player_human.dart';
+import 'package:angola_sustentavel/game_menu.dart';
 import 'package:angola_sustentavel/interface/Menu/Donations/donation.dart';
 // import 'package:angola_sustentavel/interface/pay_wallet.dart';
 import 'package:angola_sustentavel/interface/player_interface.dart';
@@ -54,6 +55,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/level01': (context) => const MyHomePage(),
         '/wallet': (context) => const MyDonations(),
+        '/mainmenu': (context) => const MenuGame()
       },
     );
   }

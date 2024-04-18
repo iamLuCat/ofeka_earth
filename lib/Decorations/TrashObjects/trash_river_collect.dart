@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:angola_sustentavel/Decorations/decoration_sprite_sheet.dart';
 import 'package:bonfire/bonfire.dart';
 import 'package:flutter/widgets.dart';

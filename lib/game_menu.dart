@@ -40,6 +40,7 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
   PreferredSizeWidget _buildAppBar() {
     String language = AppLocalizations.of(context)!.language;
     return AppBar(
+      automaticallyImplyLeading: false,
       title: Text(language),
       backgroundColor: const Color.fromARGB(255, 201, 195, 194),
       actions: [
@@ -138,7 +139,7 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 50,
+                    height: 40,
                     width: 150,
                     child: ElevatedButton(
                       onPressed: () {
@@ -147,16 +148,15 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: const BorderSide(color: Colors.black),
+                          side: BorderSide(color: Colors.white, width: 3.0),
                         ),
                         backgroundColor:
                             const Color.fromARGB(255, 255, 192, 17),
                       ),
                       child: Text(
                         play,
-                        style: const TextStyle(
-                          fontSize: 20,
-                        ),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.black),
                       ),
                     ),
                   ),
@@ -171,14 +171,15 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: const BorderSide(color: Colors.black),
+                          side: BorderSide(color: Colors.white, width: 3.0),
                         ),
                         backgroundColor:
                             const Color.fromARGB(255, 255, 192, 17),
                       ),
                       child: Text(
                         wallet,
-                        style: const TextStyle(fontSize: 20),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.black),
                       ),
                     ),
                   ),
@@ -193,14 +194,15 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: const BorderSide(color: Colors.black),
+                          side: BorderSide(color: Colors.white, width: 3.0),
                         ),
                         backgroundColor:
                             const Color.fromARGB(255, 255, 192, 17),
                       ),
                       child: Text(
                         options,
-                        style: const TextStyle(fontSize: 20),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.black),
                       ),
                     ),
                   ),
@@ -215,14 +217,15 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: const BorderSide(color: Colors.black),
+                          side: BorderSide(color: Colors.white, width: 3.0),
                         ),
                         backgroundColor:
                             const Color.fromARGB(255, 255, 192, 17),
                       ),
                       child: Text(
                         quit,
-                        style: const TextStyle(fontSize: 20),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.black),
                       ),
                     ),
                   ),
