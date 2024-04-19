@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: "Lora"),
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: "LondrinaSolid"),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: _locale,

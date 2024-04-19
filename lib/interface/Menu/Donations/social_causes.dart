@@ -39,6 +39,7 @@ class DonationCauses extends StatelessWidget {
     }
 
     return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: "LondrinaSolid"),
       home: Scaffold(
         appBar: AppBar(
           title: Text(AppLocalizations.of(context)!.social_causes),

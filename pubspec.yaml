@@ -39,7 +39,9 @@ dependencies:
   flame: ^1.0.0-releasecandidate.17
   add_to_google_wallet: ^0.0.3
   uuid: ^3.0.0
+  responsive_builder: ^0.7.0
   # google_fonts: ^2.3.3
+  # flame_audio: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -106,6 +108,17 @@ flutter:
         - asset: assets/fonts/lora/Lora-Bold.ttf
         - asset: assets/fonts/lora/Lora-Regular.ttf
         - asset: assets/fonts/lora/Lora-Medium.ttf
+
+    - family: LondrinaSolid
+      fonts:
+        - asset: assets/fonts/Londrina_Solid/LondrinaSolid-Black.ttf
+        - asset: assets/fonts/Londrina_Solid/LondrinaSolid-Regular.ttf
+        - asset: assets/fonts/Londrina_Solid/LondrinaSolid-Thin.ttf
+        
+
+
+
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

@@ -34,7 +34,9 @@ class NgonaFriends extends SimpleEnemy with TapGesture {
     TalkDialog.show(context, [
       Say(
         text: [
-          TextSpan(text: dialogue_01),
+          TextSpan(
+              text: dialogue_01,
+              style: TextStyle(fontFamily: "LondrinaSolid-Thin")),
         ],
         person: SizedBox(
           height: 100,
@@ -44,7 +46,9 @@ class NgonaFriends extends SimpleEnemy with TapGesture {
       ),
       Say(
         text: [
-          TextSpan(text: dialogue_02),
+          TextSpan(
+              text: dialogue_02,
+              style: TextStyle(fontFamily: "LondrinaSolid-Thin")),
         ],
         person: SizedBox(
           height: 100,
@@ -55,7 +59,9 @@ class NgonaFriends extends SimpleEnemy with TapGesture {
       ),
       Say(
         text: [
-          TextSpan(text: dialogue_03),
+          TextSpan(
+              text: dialogue_03,
+              style: TextStyle(fontFamily: "LondrinaSolid-Thin")),
         ],
         person: SizedBox(
           height: 100,
@@ -65,7 +71,9 @@ class NgonaFriends extends SimpleEnemy with TapGesture {
       ),
       Say(
         text: [
-          TextSpan(text: dialogue_04),
+          TextSpan(
+              text: dialogue_04,
+              style: TextStyle(fontFamily: "LondrinaSolid-Thin")),
         ],
         person: SizedBox(
           height: 100,
@@ -76,7 +84,9 @@ class NgonaFriends extends SimpleEnemy with TapGesture {
       ),
       Say(
         text: [
-          TextSpan(text: dialogue_05),
+          TextSpan(
+              text: dialogue_05,
+              style: TextStyle(fontFamily: "LondrinaSolid-Thin")),
         ],
         person: SizedBox(
           height: 100,
@@ -86,7 +96,9 @@ class NgonaFriends extends SimpleEnemy with TapGesture {
       ),
       Say(
         text: [
-          TextSpan(text: dialogue_06),
+          TextSpan(
+              text: dialogue_06,
+              style: TextStyle(fontFamily: "LondrinaSolid-Thin")),
         ],
         person: SizedBox(
           height: 100,
@@ -97,7 +109,9 @@ class NgonaFriends extends SimpleEnemy with TapGesture {
       ),
       Say(
         text: [
-          TextSpan(text: dialogue_07),
+          TextSpan(
+              text: dialogue_07,
+              style: TextStyle(fontFamily: "LondrinaSolid-Thin")),
         ],
         person: SizedBox(
           height: 100,
@@ -107,7 +121,9 @@ class NgonaFriends extends SimpleEnemy with TapGesture {
       ),
       Say(
         text: [
-          TextSpan(text: dialogue_08),
+          TextSpan(
+              text: dialogue_08,
+              style: TextStyle(fontFamily: "LondrinaSolid-Thin")),
         ],
         person: SizedBox(
           height: 100,

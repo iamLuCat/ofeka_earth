@@ -30,7 +30,6 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _setBackgroundImage(); // Chame _setBackgroundImage aqui
   }
 
   PreferredSizeWidget _buildAppBar() {
@@ -121,51 +120,6 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
     }
   }
 
-//Set the sizebutton when we've a different orientation
-  // SizedBox _setSizeButton(BuildContext context) {
-  //   double width;
-  //   double height;
-
-  //   if (MediaQuery.of(context).orientation == Orientation.landscape) {
-  //     width = 30;
-  //     height = 140;
-  //   } else {
-  //     width = 40;
-  //     height = 150;
-  //   }
-
-  //   return SizedBox(
-  //     width: width,
-  //     height: height,
-  //   );
-  // }
-
-  void _setBackgroundImage() {
-    if ((MediaQuery.of(context).orientation == Orientation.landscape) &&
-        (Platform.isAndroid)) {
-      _backgroundImage = 'assets/menupagegame_horizontal2.png';
-    } else if (Platform.isAndroid || Platform.isIOS) {
-      _backgroundImage = 'assets/menupagegame.png';
-    }
-
-    if ((MediaQuery.of(context).orientation == Orientation.landscape) &&
-        (Platform.isWindows || Platform.isMacOS || Platform.isLinux)) {
-      _backgroundImage = 'assets/menupagegame_windows.png';
-    } else {
-      _backgroundImage = 'assets/menupagegame_windows.png';
-    }
-
-    // if (Platform.isWindows || Platform.isMacOS) {
-    //   _backgroundImage = 'assets/menupagegame_windows.png';
-    // } else {
-    //   _backgroundImage = 'assets/menupagegame.png';
-    // }
-
-    // if (Platform.isAndroid) {
-    //   _backgroundImage = 'assets/menupagegame_horizontal2.png';
-    // }
-  }
-
   @override
   Widget build(BuildContext context) {
     String play = AppLocalizations.of(context)!.play;
@@ -173,14 +127,27 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
     String options = AppLocalizations.of(context)!.options;
     String quit = AppLocalizations.of(context)!.quit;
 
+    _backgroundImage = 'assets/menupagegame.png';
+
+    // Defina um tamanho base para os botões
+    double buttonWidth = 150.0;
+    double buttonHeight = 40.0;
+
+    // Ajuste o tamanho dos botões com base na largura da tela
+    // if (screenWidth < 600) {
+    //   buttonWidth =
+    //       screenWidth * 0.8; // Use 80% da largura da tela para os botões
+    // }
+
     return Scaffold(
       appBar: _buildAppBar(),
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(_backgroundImage),
-            fit: BoxFit.cover,
-          ),
+          // image: DecorationImage(
+          //   image: AssetImage(_backgroundImage),
+          //   fit: BoxFit.cover,
+          // ),
+          color: Colors.black,
         ),
         child: Center(
           child: Padding(
@@ -190,8 +157,8 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 40,
-                    width: 150,
+                    height: buttonHeight,
+                    width: buttonWidth,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/level01');
@@ -209,14 +176,14 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                         style: const TextStyle(
                             fontSize: 20,
                             color: Colors.black,
-                            fontFamily: "Lora"),
+                            fontFamily: "LondrinaSolid"),
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
                   SizedBox(
-                    height: 40,
-                    width: 150,
+                    height: buttonHeight,
+                    width: buttonWidth,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/wallet');
@@ -231,15 +198,17 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                       ),
                       child: Text(
                         wallet,
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.black),
+                        style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: "LondrinaSolid"),
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
                   SizedBox(
-                    height: 40,
-                    width: 150,
+                    height: buttonHeight,
+                    width: buttonWidth,
                     child: ElevatedButton(
                       onPressed: () {
                         // Adicione a navegação para outras opções
@@ -254,15 +223,17 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                       ),
                       child: Text(
                         options,
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.black),
+                        style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: "LondrinaSolid"),
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
                   SizedBox(
-                    height: 40,
-                    width: 150,
+                    height: buttonHeight,
+                    width: buttonWidth,
                     child: ElevatedButton(
                       onPressed: () {
                         exit(0);
@@ -277,8 +248,10 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                       ),
                       child: Text(
                         quit,
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.black),
+                        style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: "LondrinaSolid"),
                       ),
                     ),
                   ),
