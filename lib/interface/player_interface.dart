@@ -258,7 +258,7 @@ Widget build(BuildContext context) {
 }
 
 Future<bool> _showExitConfirmationDialog(BuildContext context) async {
-  final localization = AppLocalizations.of(context)!;
+  // final localization = AppLocalizations.of(context)!;
   return await showDialog(
     context: context,
     builder: (context) => AlertDialog(

@@ -84,17 +84,11 @@ class ReforestationTrees extends GameDecoration
   }
 
   @override
-  void onTapCancel() {
-    // TODO: implement onTapCancel
-  }
+  void onTapCancel() {}
 
   @override
-  void onTapDown(int pointer, Offset position) {
-    // TODO: implement onTapDown
-  }
+  void onTapDown(int pointer, Offset position) {}
 
   @override
-  void onTapUp(int pointer, Offset position) {
-    // TODO: implement onTapUp
-  }
+  void onTapUp(int pointer, Offset position) {}
 }

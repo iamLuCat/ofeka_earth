@@ -7,7 +7,6 @@ class MenuGame extends StatefulWidget {
   const MenuGame({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _MenuGameState createState() => _MenuGameState();
 }
 
@@ -19,22 +18,19 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     _selectedLanguage = 'English'; // Idioma padrão
-    _setBackgroundImage();
     WidgetsBinding.instance.addObserver(this);
-  }
-
-  void _setBackgroundImage() {
-    if (Platform.isWindows || Platform.isMacOS) {
-      _backgroundImage = 'assets/menupagegame_windows.png';
-    } else {
-      _backgroundImage = 'assets/menupagegame.png';
-    }
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _setBackgroundImage(); // Chame _setBackgroundImage aqui
   }
 
   PreferredSizeWidget _buildAppBar() {
@@ -114,6 +110,62 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
     MyApp.setLocale(context, Locale(languageCode, '')); // Alterando o idioma
   }
 
+  //Change the size between the button when we have a differnt orientation screen
+  EdgeInsets _getPadding(BuildContext context) {
+    if (MediaQuery.of(context).orientation == Orientation.landscape) {
+      // Horizontal orientation
+      return const EdgeInsets.only(top: 40);
+    } else {
+      // Vertical Orientation
+      return const EdgeInsets.only(top: 250);
+    }
+  }
+
+//Set the sizebutton when we've a different orientation
+  // SizedBox _setSizeButton(BuildContext context) {
+  //   double width;
+  //   double height;
+
+  //   if (MediaQuery.of(context).orientation == Orientation.landscape) {
+  //     width = 30;
+  //     height = 140;
+  //   } else {
+  //     width = 40;
+  //     height = 150;
+  //   }
+
+  //   return SizedBox(
+  //     width: width,
+  //     height: height,
+  //   );
+  // }
+
+  void _setBackgroundImage() {
+    if ((MediaQuery.of(context).orientation == Orientation.landscape) &&
+        (Platform.isAndroid)) {
+      _backgroundImage = 'assets/menupagegame_horizontal2.png';
+    } else if (Platform.isAndroid || Platform.isIOS) {
+      _backgroundImage = 'assets/menupagegame.png';
+    }
+
+    if ((MediaQuery.of(context).orientation == Orientation.landscape) &&
+        (Platform.isWindows || Platform.isMacOS || Platform.isLinux)) {
+      _backgroundImage = 'assets/menupagegame_windows.png';
+    } else {
+      _backgroundImage = 'assets/menupagegame_windows.png';
+    }
+
+    // if (Platform.isWindows || Platform.isMacOS) {
+    //   _backgroundImage = 'assets/menupagegame_windows.png';
+    // } else {
+    //   _backgroundImage = 'assets/menupagegame.png';
+    // }
+
+    // if (Platform.isAndroid) {
+    //   _backgroundImage = 'assets/menupagegame_horizontal2.png';
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     String play = AppLocalizations.of(context)!.play;
@@ -132,9 +184,8 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
         ),
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 120),
-            child: Container(
-              margin: const EdgeInsets.only(top: 120),
+            padding: _getPadding(context),
+            child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -155,8 +206,10 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
                       ),
                       child: Text(
                         play,
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.black),
+                        style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: "Lora"),
                       ),
                     ),
                   ),
