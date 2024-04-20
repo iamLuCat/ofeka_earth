@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:angola_sustentavel/Utils/app_colors.dart';
 import 'package:angola_sustentavel/Utils/diagonal_path_clipper.dart';
 import 'package:angola_sustentavel/Utils/game_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:angola_sustentavel/main.dart';
@@ -35,22 +36,23 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
   }
 
   PreferredSizeWidget _buildAppBar() {
-    String language = AppLocalizations.of(context)!.language;
     return AppBar(
       automaticallyImplyLeading: false,
       title: Text(
-        language,
+        'Ofeka Earth',
         style: TextStyle(color: Colors.white),
       ),
       backgroundColor: Colors.transparent,
       elevation: 0,
       actions: [
-        IconButton(
-          icon: const Icon(
-            Icons.language,
-            color: Colors.white,
+        Padding(
+          padding: const EdgeInsets.only(right: 5),
+          child: IconButton(
+            icon: ImageIcon(
+              AssetImage('assets/icones/language_logo.png'),
+            ),
+            onPressed: _showLanguageDialog,
           ),
-          onPressed: _showLanguageDialog,
         ),
       ],
     );
@@ -143,12 +145,22 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Center(
+            child: SizedBox(
+              width: 150,
+              height: 150,
+              child: Image.asset(
+                'assets/icones/logo_game.png',
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
           _buildButton(play, '/level01'),
           const SizedBox(height: 16),
           _buildButton(wallet, '/wallet'),
           const SizedBox(height: 16),
-          _buildButton(options, ''),
-          const SizedBox(height: 16),
+          //_buildButton(options, ''),
+          //const SizedBox(height: 16),
           _buildButton(quit, ''),
         ],
       ),
