@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:angola_sustentavel/Utils/app_colors.dart';
+import 'package:angola_sustentavel/Utils/diagonal_path_clipper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:angola_sustentavel/main.dart';
@@ -11,13 +13,12 @@ class MenuGame extends StatefulWidget {
 }
 
 class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
-  late String _backgroundImage;
   late String _selectedLanguage;
 
   @override
   void initState() {
     super.initState();
-    _selectedLanguage = 'English'; // Idioma padrão
+    _selectedLanguage = 'English'; // Default language
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -36,11 +37,18 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
     String language = AppLocalizations.of(context)!.language;
     return AppBar(
       automaticallyImplyLeading: false,
-      title: Text(language),
-      backgroundColor: const Color.fromARGB(255, 201, 195, 194),
+      title: Text(
+        language,
+        style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.transparent,
+      elevation: 0,
       actions: [
         IconButton(
-          icon: const Icon(Icons.language),
+          icon: const Icon(
+            Icons.language,
+            color: Colors.white,
+          ),
           onPressed: _showLanguageDialog,
         ),
       ],
@@ -48,31 +56,23 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
   }
 
   void _showLanguageDialog() {
-    String selectlanguage = AppLocalizations.of(context)!.select_your_language;
+    String selectedLanguage =
+        AppLocalizations.of(context)!.select_your_language;
 
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(selectlanguage),
+          title: Text(selectedLanguage),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
                 _buildLanguageItem(
-                  'English',
-                  'assets/images/language/uk_flag.png',
-                  'en',
-                ),
+                    'English', 'assets/images/language/uk_flag.png', 'en'),
+                _buildLanguageItem('Português',
+                    'assets/images/language/portugal_flag.png', 'pt'),
                 _buildLanguageItem(
-                  'Português',
-                  'assets/images/language/portugal_flag.png',
-                  'pt',
-                ),
-                _buildLanguageItem(
-                  '日本語',
-                  'assets/images/language/japan_flag.png',
-                  'ja',
-                ),
+                    '日本語', 'assets/images/language/japan_flag.png', 'ja'),
               ],
             ),
           ),
@@ -98,18 +98,102 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
           _selectedLanguage = language;
         });
         Navigator.pop(context);
-        _changeLanguage(
-            languageCode); // Chamando a função para alterar o idioma
+        _changeLanguage(languageCode);
       },
       selected: _selectedLanguage == language,
     );
   }
 
   void _changeLanguage(String languageCode) {
-    MyApp.setLocale(context, Locale(languageCode, '')); // Alterando o idioma
+    MyApp.setLocale(context, Locale(languageCode, ''));
   }
 
-  //Change the size between the button when we have a differnt orientation screen
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.redColor,
+      body: Stack(
+        children: [
+          ClipPath(
+            clipper: DiagonalPathClipper(),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black,
+              ),
+            ),
+          ),
+          _buildBody(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBody() {
+    String play = AppLocalizations.of(context)!.play;
+    String wallet = AppLocalizations.of(context)!.make_donation;
+    String options = AppLocalizations.of(context)!.options;
+    String quit = AppLocalizations.of(context)!.quit;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _buildAppBar(),
+        Center(
+          child: Padding(
+            padding: _getPadding(context),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildButton(play, '/level01'),
+                  const SizedBox(height: 16),
+                  _buildButton(wallet, '/wallet'),
+                  const SizedBox(height: 16),
+                  _buildButton(options, ''),
+                  const SizedBox(height: 16),
+                  _buildButton(quit, ''),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildButton(String text, String route) {
+    return SizedBox(
+      height: 50,
+      width: 200,
+      child: ElevatedButton(
+        onPressed: () {
+          if (route.isNotEmpty) {
+            Navigator.pushNamed(context, route);
+          } else {
+            if (text == AppLocalizations.of(context)!.quit) {
+              exit(0); // Quit the application
+            }
+          }
+        },
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.white, width: 3.0),
+          ),
+          backgroundColor: AppColors.yellowColor,
+        ),
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Change the size between the button when we have a different orientation screen
   EdgeInsets _getPadding(BuildContext context) {
     if (MediaQuery.of(context).orientation == Orientation.landscape) {
       // Horizontal orientation
@@ -118,149 +202,5 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
       // Vertical Orientation
       return const EdgeInsets.only(top: 250);
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    String play = AppLocalizations.of(context)!.play;
-    String wallet = AppLocalizations.of(context)!.make_donation;
-    String options = AppLocalizations.of(context)!.options;
-    String quit = AppLocalizations.of(context)!.quit;
-
-    _backgroundImage = 'assets/menupagegame.png';
-
-    // Defina um tamanho base para os botões
-    double buttonWidth = 150.0;
-    double buttonHeight = 40.0;
-
-    // Ajuste o tamanho dos botões com base na largura da tela
-    // if (screenWidth < 600) {
-    //   buttonWidth =
-    //       screenWidth * 0.8; // Use 80% da largura da tela para os botões
-    // }
-
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: Container(
-        decoration: BoxDecoration(
-          // image: DecorationImage(
-          //   image: AssetImage(_backgroundImage),
-          //   fit: BoxFit.cover,
-          // ),
-          color: Colors.black,
-        ),
-        child: Center(
-          child: Padding(
-            padding: _getPadding(context),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: buttonHeight,
-                    width: buttonWidth,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/level01');
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(color: Colors.white, width: 3.0),
-                        ),
-                        backgroundColor:
-                            const Color.fromARGB(255, 255, 192, 17),
-                      ),
-                      child: Text(
-                        play,
-                        style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: "LondrinaSolid"),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    height: buttonHeight,
-                    width: buttonWidth,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/wallet');
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(color: Colors.white, width: 3.0),
-                        ),
-                        backgroundColor:
-                            const Color.fromARGB(255, 255, 192, 17),
-                      ),
-                      child: Text(
-                        wallet,
-                        style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: "LondrinaSolid"),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    height: buttonHeight,
-                    width: buttonWidth,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Adicione a navegação para outras opções
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(color: Colors.white, width: 3.0),
-                        ),
-                        backgroundColor:
-                            const Color.fromARGB(255, 255, 192, 17),
-                      ),
-                      child: Text(
-                        options,
-                        style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: "LondrinaSolid"),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    height: buttonHeight,
-                    width: buttonWidth,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        exit(0);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(color: Colors.white, width: 3.0),
-                        ),
-                        backgroundColor:
-                            const Color.fromARGB(255, 255, 192, 17),
-                      ),
-                      child: Text(
-                        quit,
-                        style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: "LondrinaSolid"),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }

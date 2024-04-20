@@ -1,18 +1,17 @@
-import 'package:angola_sustentavel/Decorations/Farm/Vegetables/vegetables_plant.dart';
-import 'package:angola_sustentavel/Decorations/TrashObjects/trash_river_collect.dart';
-import 'package:angola_sustentavel/Decorations/reforestation.dart';
-import 'package:angola_sustentavel/NPCS/ngola_friends.dart';
-import 'package:angola_sustentavel/Player/player_human.dart';
-import 'package:angola_sustentavel/game_menu.dart';
-import 'package:angola_sustentavel/interface/Menu/Donations/donation.dart';
-// import 'package:angola_sustentavel/interface/pay_wallet.dart';
-import 'package:angola_sustentavel/interface/player_interface.dart';
-import 'package:angola_sustentavel/interface/splach_screen_game.dart';
-import 'package:bonfire/bonfire.dart';
-// import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bonfire/bonfire.dart';
+
+import 'Decorations/Farm/Vegetables/vegetables_plant.dart';
+import 'Decorations/TrashObjects/trash_river_collect.dart';
+import 'Decorations/reforestation.dart';
+import 'NPCS/ngola_friends.dart';
+import 'Player/player_human.dart';
+import 'Utils/app_colors.dart';
+import 'game_menu.dart';
+import 'interface/Menu/Donations/donation.dart';
+import 'interface/player_interface.dart';
+import 'interface/splach_screen_game.dart';
 
 const double tileSize = 12;
 
@@ -44,10 +43,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: "LondrinaSolid"),
+      title: 'Ofeka Earth',
+      theme: ThemeData(
+          primaryColor: AppColors.redColor, fontFamily: "LondrinaSolid"),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      debugShowCheckedModeBanner: false,
       locale: _locale,
       home: const SplachScreenGame(),
       routes: {
@@ -62,17 +63,9 @@ class _MyAppState extends State<MyApp> {
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
-  // void onPressed() async {
-  //   FlameAudio.loop('wildssound.mp3');
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // FlameAudio.loop('wildssound.mp3');
-    // onPressed();
-
     return BonfireTiledWidget(
-      // joystick: JoystickMoveToPosition(),
       joystick: Joystick(
         directional: JoystickDirectional(color: Colors.black),
         actions: [
@@ -136,7 +129,6 @@ class MyHomePage extends StatelessWidget {
         sizeMovementWindow: const Size(tileSize * 3, tileSize * 3),
         zoom: 1.5,
       ),
-      // showCollisionArea: true,
     );
   }
 }
