@@ -145,12 +145,22 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Center(
+            child: SizedBox(
+              width: 150,
+              height: 150,
+              child: Image.asset(
+                'assets/icones/logo_game.png',
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
           _buildButton(play, '/level01'),
           const SizedBox(height: 16),
           _buildButton(wallet, '/wallet'),
           const SizedBox(height: 16),
-          _buildButton(options, ''),
-          const SizedBox(height: 16),
+          //_buildButton(options, ''),
+          //const SizedBox(height: 16),
           _buildButton(quit, ''),
         ],
       ),
