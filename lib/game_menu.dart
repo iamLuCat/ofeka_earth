@@ -122,6 +122,10 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: _buildAppBar(),
+          ),
           _buildBody(),
         ],
       ),
@@ -134,25 +138,20 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
     String options = AppLocalizations.of(context)!.options;
     String quit = AppLocalizations.of(context)!.quit;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        _buildAppBar(),
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildButton(play, '/level01'),
-              const SizedBox(height: 16),
-              _buildButton(wallet, '/wallet'),
-              const SizedBox(height: 16),
-              _buildButton(options, ''),
-              const SizedBox(height: 16),
-              _buildButton(quit, ''),
-            ],
-          ),
-        ),
-      ],
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _buildButton(play, '/level01'),
+          const SizedBox(height: 16),
+          _buildButton(wallet, '/wallet'),
+          const SizedBox(height: 16),
+          _buildButton(options, ''),
+          const SizedBox(height: 16),
+          _buildButton(quit, ''),
+        ],
+      ),
     );
   }
 
