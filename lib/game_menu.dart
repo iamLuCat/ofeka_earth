@@ -139,22 +139,17 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
       children: [
         _buildAppBar(),
         Center(
-          child: Padding(
-            padding: _getPadding(context),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildButton(play, '/level01'),
-                  const SizedBox(height: 16),
-                  _buildButton(wallet, '/wallet'),
-                  const SizedBox(height: 16),
-                  _buildButton(options, ''),
-                  const SizedBox(height: 16),
-                  _buildButton(quit, ''),
-                ],
-              ),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildButton(play, '/level01'),
+              const SizedBox(height: 16),
+              _buildButton(wallet, '/wallet'),
+              const SizedBox(height: 16),
+              _buildButton(options, ''),
+              const SizedBox(height: 16),
+              _buildButton(quit, ''),
+            ],
           ),
         ),
       ],
