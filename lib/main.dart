@@ -1,3 +1,4 @@
+import 'package:angola_sustentavel/Utils/app_dimens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:bonfire/bonfire.dart';
@@ -45,7 +46,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Ofeka Earth',
       theme: ThemeData(
-          primaryColor: AppColors.redColor, fontFamily: "LondrinaSolid"),
+        primaryColor: AppColors.redColor,
+        brightness: Brightness.dark,
+        colorScheme: ColorScheme.dark(
+          background: Colors.black,
+        ),
+        dialogBackgroundColor: Colors.black,
+        fontFamily: "LondrinaSolid",
+        useMaterial3: false
+      ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
@@ -65,15 +74,26 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final directionButtonSize = AppDimens.directionButtonSize;
+
     return BonfireTiledWidget(
       joystick: Joystick(
-        directional: JoystickDirectional(color: Colors.black),
+        directional: JoystickDirectional(
+          color: Colors.black,
+          margin: EdgeInsets.only(
+            left: (screenWidth - directionButtonSize)/1.5,
+            right: (screenWidth - directionButtonSize)/1.5,
+            bottom: 100
+          ),
+          size: directionButtonSize
+        ),
         actions: [
-          JoystickAction(
+          /*JoystickAction(
             actionId: 1,
             color: Colors.white,
             margin: const EdgeInsets.all(40),
-          ),
+          ),*/
         ],
         keyboardConfig: KeyboardConfig(
           keyboardDirectionalType: KeyboardDirectionalType.arrows,
@@ -128,6 +148,18 @@ class MyHomePage extends StatelessWidget {
         moveOnlyMapArea: true,
         sizeMovementWindow: const Size(tileSize * 3, tileSize * 3),
         zoom: 1.5,
+      ),
+      progress: Material(
+        color: Colors.transparent,
+        child: Center(
+          child: SizedBox(
+            width: 100,
+            height: 100,
+            child: Image.asset(
+              'assets/icones/logo_game.png',
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:angola_sustentavel/Decorations/TrashObjects/trash_river_collect.dart';
 import 'package:angola_sustentavel/Decorations/reforestation.dart';
+import 'package:angola_sustentavel/Utils/app_colors.dart';
+import 'package:angola_sustentavel/Utils/game_button.dart';
 import 'package:bonfire/base/bonfire_game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -37,124 +39,133 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(45.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(80),
-                  border: Border.all(color: Colors.black),
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Container(
-                width: widthCurrent,
-                height: 20,
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(color: Colors.white),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Positioned(
-          right: 20,
-          top: 80,
-          child: GestureDetector(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+    return Material(
+      color: Colors.transparent,
+      child: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 25.0,
+              top: 60.0,
+              bottom: 45.0,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 40,
-                  height: 40,
-                  child: Image.asset(
-                    'assets/icones/tree_collecter.png',
+                Container(
+                  width: 35,
+                  height: 35,
+                  decoration: BoxDecoration(
+                    //color: Colors.white,
+                    borderRadius: BorderRadius.circular(80),
+                    border: Border.all(color: Colors.white, width: 2.0),
+                  ),
+                  child: Image.asset('assets/icones/parque.png'),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  width: widthCurrent,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    color: AppColors.greenColor,
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(color: Colors.white),
                   ),
                 ),
-                SizedBox(height: 5),
               ],
             ),
           ),
-        ),
-        Positioned(
-          right: 28,
-          top: 115,
-          child: ValueListenableBuilder<int>(
-            valueListenable: ReforestationTrees.treeCollected,
-            builder: (context, value, child) {
-              return Text(
-                '$value/20',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                ),
-              );
-            },
-          ),
-        ),
-        Positioned(
-          right: 68,
-          top: 115,
-          child: ValueListenableBuilder<int>(
-            valueListenable: trashcollected_count,
-            builder: (context, value, child) {
-              return Text(
-                '$value/20',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                ),
-              );
-            },
-          ),
-        ),
-        Positioned(
-          right: 20,
-          top: 40,
-          child: GestureDetector(
-            onTap: _showPauseMenu,
-            child: SizedBox(
-              width: 40,
-              height: 40,
-              child: Image.asset('assets/icones/pause.png'),
+          Positioned(
+            right: 20,
+            top: 80,
+            child: GestureDetector(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: Image.asset(
+                      'assets/icones/tree_collecter.png',
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                ],
+              ),
             ),
           ),
-        ),
-        Positioned(
-          right: 60,
-          top: 40,
-          child: GestureDetector(
-            onTap: _showHintDialog,
-            child: SizedBox(
-              width: 40,
-              height: 40,
-              child: Image.asset('assets/icones/hint.png'),
+          Positioned(
+            right: 28,
+            top: 115,
+            child: ValueListenableBuilder<int>(
+              valueListenable: ReforestationTrees.treeCollected,
+              builder: (context, value, child) {
+                return Text(
+                  '$value/20',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                  ),
+                );
+              },
             ),
           ),
-        ),
-        Positioned(
-          right: 60,
-          top: 80,
-          child: GestureDetector(
-            child: SizedBox(
-              width: 40,
-              height: 40,
-              child: Image.asset('assets/icones/trash_can.png'),
+          Positioned(
+            right: 68,
+            top: 115,
+            child: ValueListenableBuilder<int>(
+              valueListenable: trashcollected_count,
+              builder: (context, value, child) {
+                return Text(
+                  '$value/20',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                  ),
+                );
+              },
             ),
           ),
-        ),
-      ],
+          Positioned(
+            right: 20,
+            top: 40,
+            child: GestureDetector(
+              onTap: _showPauseMenu,
+              child: SizedBox(
+                width: 40,
+                height: 40,
+                child: Image.asset('assets/icones/pause.png'),
+              ),
+            ),
+          ),
+          Positioned(
+            right: 60,
+            top: 40,
+            child: GestureDetector(
+              onTap: _showHintDialog,
+              child: SizedBox(
+                width: 40,
+                height: 40,
+                child: Image.asset('assets/icones/hint.png'),
+              ),
+            ),
+          ),
+          Positioned(
+            right: 60,
+            top: 80,
+            child: GestureDetector(
+              child: SizedBox(
+                width: 40,
+                height: 40,
+                child: Image.asset('assets/icones/trash_can.png'),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -174,30 +185,33 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context)!.pause_menu),
+          title: Center(child: Text(AppLocalizations.of(context)!.pause_menu)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: AppColors.yellowColor, width: 3.0),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ElevatedButton(
+              GameButton(
                 onPressed: () {
-                  //Create a logic to back to the menu page
                   Navigator.of(context).pop();
                 },
-                child: Text(AppLocalizations.of(context)!.back_game),
+                text: AppLocalizations.of(context)!.back_game,
               ),
-              const SizedBox(height: 10),
-              ElevatedButton(
+              const SizedBox(height: 16),
+              GameButton(
                 onPressed: () {
                   Navigator.popAndPushNamed(context, '/mainmenu');
                 },
-                child: Text(AppLocalizations.of(context)!.back_menu),
+                text: AppLocalizations.of(context)!.back_menu,
               ),
-              const SizedBox(height: 10),
-              ElevatedButton(
+              const SizedBox(height: 16),
+              GameButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text(AppLocalizations.of(context)!.game_shop),
+                text: AppLocalizations.of(context)!.game_shop,
               ),
             ],
           ),
@@ -229,13 +243,24 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(AppLocalizations.of(context)!.hints),
-          content: Image.asset(imagePath),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: AppColors.yellowColor, width: 3.0),
+          ),
+          content: ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+              child: Image.asset(imagePath)),
           actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(AppLocalizations.of(context)!.close),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: GameButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  text: AppLocalizations.of(context)!.back_game,
+                ),
+              ),
             ),
           ],
         );

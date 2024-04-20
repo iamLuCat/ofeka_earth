@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:angola_sustentavel/Utils/app_colors.dart';
 import 'package:angola_sustentavel/Utils/diagonal_path_clipper.dart';
+import 'package:angola_sustentavel/Utils/game_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:angola_sustentavel/main.dart';
@@ -63,16 +64,17 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(selectedLanguage),
+          title: Center(child: Text(selectedLanguage)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: AppColors.yellowColor, width: 3.0),
+          ),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                _buildLanguageItem(
-                    'English', 'assets/images/language/uk_flag.png', 'en'),
-                _buildLanguageItem('Português',
-                    'assets/images/language/portugal_flag.png', 'pt'),
-                _buildLanguageItem(
-                    '日本語', 'assets/images/language/japan_flag.png', 'ja'),
+                _buildLanguageItem('English', '🇬🇧', 'en'),
+                _buildLanguageItem('Português', '🇵🇹', 'pt'),
+                _buildLanguageItem('日本語', '🇯🇵', 'ja'),
               ],
             ),
           ),
@@ -81,18 +83,16 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
     );
   }
 
-  Widget _buildLanguageItem(
-      String language, String flagImagePath, String languageCode) {
+  Widget _buildLanguageItem(String language, String flag, String languageCode) {
     return ListTile(
-      leading: SizedBox(
-        width: 32,
-        height: 32,
-        child: Image.asset(
-          flagImagePath,
-          fit: BoxFit.cover,
-        ),
+      leading: Text(
+        flag,
+        style: TextStyle(fontSize: 35),
       ),
-      title: Text(language),
+      title: Text(
+        language,
+        style: TextStyle(fontWeight: FontWeight.w500),
+      ),
       onTap: () {
         setState(() {
           _selectedLanguage = language;
@@ -122,6 +122,10 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: _buildAppBar(),
+          ),
           _buildBody(),
         ],
       ),
@@ -134,30 +138,20 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
     String options = AppLocalizations.of(context)!.options;
     String quit = AppLocalizations.of(context)!.quit;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        _buildAppBar(),
-        Center(
-          child: Padding(
-            padding: _getPadding(context),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildButton(play, '/level01'),
-                  const SizedBox(height: 16),
-                  _buildButton(wallet, '/wallet'),
-                  const SizedBox(height: 16),
-                  _buildButton(options, ''),
-                  const SizedBox(height: 16),
-                  _buildButton(quit, ''),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _buildButton(play, '/level01'),
+          const SizedBox(height: 16),
+          _buildButton(wallet, '/wallet'),
+          const SizedBox(height: 16),
+          _buildButton(options, ''),
+          const SizedBox(height: 16),
+          _buildButton(quit, ''),
+        ],
+      ),
     );
   }
 
@@ -165,7 +159,8 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
     return SizedBox(
       height: 50,
       width: 200,
-      child: ElevatedButton(
+      child: GameButton(
+        text: text,
         onPressed: () {
           if (route.isNotEmpty) {
             Navigator.pushNamed(context, route);
@@ -175,20 +170,6 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
             }
           }
         },
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.white, width: 3.0),
-          ),
-          backgroundColor: AppColors.yellowColor,
-        ),
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 20,
-            color: Colors.black,
-          ),
-        ),
       ),
     );
   }
