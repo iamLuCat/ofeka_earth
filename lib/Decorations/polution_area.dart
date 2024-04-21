@@ -3,8 +3,6 @@ import 'package:angola_sustentavel/Decorations/TrashObjects/trash_river_collect.
 import 'package:bonfire/bonfire.dart';
 
 class PolutionArea extends GameDecoration with ObjectCollision {
-  bool collisionArea = false;
-
   PolutionArea(Vector2 position)
       : super.withSprite(
           DecorationSpriteSheet.polution_area_icone,

@@ -1,3 +1,7 @@
+import 'package:angola_sustentavel/Decorations/polution_area.dart';
+import 'package:angola_sustentavel/NPCS/animals/chicken.dart';
+import 'package:angola_sustentavel/NPCS/animals/cow.dart';
+import 'package:angola_sustentavel/NPCS/animals/sheep.dart';
 import 'package:angola_sustentavel/Utils/app_dimens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -6,7 +10,7 @@ import 'package:bonfire/bonfire.dart';
 import 'Decorations/Farm/Vegetables/vegetables_plant.dart';
 import 'Decorations/TrashObjects/trash_river_collect.dart';
 import 'Decorations/reforestation.dart';
-import 'NPCS/ngola_friends.dart';
+import 'NPCS/villagers/ngola_friends.dart';
 import 'Player/player_human.dart';
 import 'Utils/app_colors.dart';
 import 'game_menu.dart';
@@ -46,15 +50,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Ofeka Earth',
       theme: ThemeData(
-        primaryColor: AppColors.redColor,
-        brightness: Brightness.dark,
-        colorScheme: ColorScheme.dark(
-          background: Colors.black,
-        ),
-        dialogBackgroundColor: Colors.black,
-        fontFamily: "LondrinaSolid",
-        useMaterial3: false
-      ),
+          primaryColor: AppColors.redColor,
+          brightness: Brightness.dark,
+          colorScheme: ColorScheme.dark(
+            background: Colors.black,
+          ),
+          dialogBackgroundColor: Colors.black,
+          fontFamily: "LondrinaSolid",
+          useMaterial3: false),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
@@ -80,14 +83,12 @@ class MyHomePage extends StatelessWidget {
     return BonfireTiledWidget(
       joystick: Joystick(
         directional: JoystickDirectional(
-          color: Colors.black,
-          margin: EdgeInsets.only(
-            left: (screenWidth - directionButtonSize)/1.5,
-            right: (screenWidth - directionButtonSize)/1.5,
-            bottom: 100
-          ),
-          size: directionButtonSize
-        ),
+            color: Colors.black,
+            margin: EdgeInsets.only(
+                left: (screenWidth - directionButtonSize) / 1.5,
+                right: (screenWidth - directionButtonSize) / 1.5,
+                bottom: 100),
+            size: directionButtonSize),
         actions: [
           /*JoystickAction(
             actionId: 1,
@@ -105,6 +106,19 @@ class MyHomePage extends StatelessWidget {
         objectsBuilder: {
           //NPCs
           'ngolafriends': (properties) => NgonaFriends(properties.position),
+          //ANIMALS
+          //Chickens
+          'checken': (properties) => CapitanChicken(properties.position),
+          'checken_left': (properties) =>
+              CapitanChickenLeft(properties.position),
+          //Cow
+          'cow': (properties) => CowAnimal(properties.position),
+          'cow_left': (properties) => CowAnimalLeft(properties.position),
+
+          //Sheep
+          'sheeps': (properties) => SheepAnimal(properties.position),
+          'sheeps_left': (properties) => SheepAnimalLeft(properties.position),
+
           //TreesCollectables
           'treestem': (properties) => ReforestationTrees(properties.position),
           //TrachaGameObjects
@@ -131,6 +145,7 @@ class MyHomePage extends StatelessWidget {
           'corn_plant': (properties) => CornPlant(properties.position),
           //Farm Vegetables Products Collectables
           'tomato_collect': (properties) => TomatoCollect(properties.position),
+          'polution_area': (properties) => PolutionArea(properties.position),
         },
       ),
       player: PlayerHuman(
@@ -147,8 +162,9 @@ class MyHomePage extends StatelessWidget {
       cameraConfig: CameraConfig(
         moveOnlyMapArea: true,
         sizeMovementWindow: const Size(tileSize * 3, tileSize * 3),
-        zoom: 1.5,
+        zoom: 1.7,
       ),
+      // showCollisionArea: true,
       progress: Material(
         color: Colors.transparent,
         child: Center(
