@@ -53,7 +53,7 @@ class PlayerHuman extends SimplePlayer with ObjectCollision {
         collisionArea = true;
         while (collisionArea) {
           receiveDamage(0.1, PolutionArea);
-          if (collisionArea == false) {
+          if (collisionArea == true) {
             break;
           }
         }
