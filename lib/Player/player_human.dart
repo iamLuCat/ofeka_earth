@@ -42,8 +42,8 @@ class PlayerHuman extends SimplePlayer with ObjectCollision {
   @override
   void update(double dt) {
     if ((!alreadyShowedWinDialog) &&
-        (trashcollected_count.value == 2) &&
-        (ReforestationTrees.treeCollected.value == 2)) {
+        (trashcollected_count.value == 15) &&
+        (ReforestationTrees.treeCollected.value == 16)) {
       alreadyShowedWinDialog = true;
       _showWinDialog(context);
     }
