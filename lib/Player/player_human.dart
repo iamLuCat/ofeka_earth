@@ -1,8 +1,19 @@
+import 'package:angola_sustentavel/Decorations/TrashObjects/trash_river_collect.dart';
+import 'package:angola_sustentavel/Decorations/polution_area.dart';
+import 'package:angola_sustentavel/Decorations/reforestation.dart';
 import 'package:angola_sustentavel/Player/game_player_sprite.dart';
+import 'package:angola_sustentavel/Utils/game_button.dart';
+import 'package:angola_sustentavel/Utils/game_button.dart';
 import 'package:bonfire/bonfire.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 class PlayerHuman extends SimplePlayer with ObjectCollision {
+  bool collisionArea = false;
+  bool alreadyShowedWinDialog = false;
+
   PlayerHuman(Vector2 position)
       : super(
           position: position,
@@ -29,31 +40,56 @@ class PlayerHuman extends SimplePlayer with ObjectCollision {
   }
 
   @override
-  void joystickAction(JoystickActionEvent event) {
-    if (event.event == ActionEvent.DOWN && event.id == 1 ||
-        event.id == LogicalKeyboardKey.space.keyId) {
-      _executeAttack();
+  void update(double dt) {
+    if ((!alreadyShowedWinDialog) &&
+        (trashcollected_count.value == 15) &&
+        (ReforestationTrees.treeCollected.value == 16)) {
+      alreadyShowedWinDialog = true;
+      _showWinDialog(context);
     }
-    super.joystickAction(event);
+
+    //Contaminated area
+    seeComponentType<PolutionArea>(observed: (PolutionArea) {
+      if (!collisionArea) {
+        collisionArea = true;
+        while (collisionArea) {
+          receiveDamage(0.1, PolutionArea);
+          if (collisionArea = false) {
+            break;
+          }
+        }
+
+        if (life <= 0) {
+          removeFromParent();
+        }
+      }
+    });
+
+    super.update(dt);
   }
 
-  void _executeAttack() {
-    simpleAttackMelee(
-      damage: 20,
-      sizePush: 0,
-      animationLeft: GameSpriteSheet.pickingLeft,
-      animationDown: GameSpriteSheet.pickingBottom,
-      animationRight: GameSpriteSheet.pickingRight,
-      animationUp: GameSpriteSheet.pickingTop,
-      height: 12 * 1.5,
-      width: 12 * 1.5,
+  void _showWinDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Parabéns!"),
+          content: Text("Você venceu o jogo!"),
+          actions: [
+            const SizedBox(height: 16),
+            GameButton(
+              onPressed: () {
+                // Resetando as variáveis para zero
+                trashcollected_count.value = 0;
+                ReforestationTrees.treeCollected.value = 0;
+                // Voltando para o menu principal
+                Navigator.popAndPushNamed(context, '/mainmenu');
+              },
+              text: ("Continue"),
+            ),
+          ],
+        );
+      },
     );
   }
-
-  // @override
-  // void onCollision(GameComponent component, bool active) {
-  //   print(active);
-  //   print(component);
-  //   super.onCollision(component, active);
-  // }
 }

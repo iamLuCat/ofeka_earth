@@ -103,6 +103,6 @@ class DecorationSpriteSheet {
           srcPosition: Vector2(0, 0), srcSize: Vector2(22, 23));
 
   static Future<Sprite> get polution_area_icone =>
-      Sprite.load('map/farm_plants/pepper.png',
+      Sprite.load('map/polution_area_icone.png',
           srcPosition: Vector2(0, 0), srcSize: Vector2(520, 394));
 }
