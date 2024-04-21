@@ -51,7 +51,16 @@ class PlayerHuman extends SimplePlayer with ObjectCollision {
     seeComponentType<PolutionArea>(observed: (PolutionArea) {
       if (!collisionArea) {
         collisionArea = true;
-        receiveDamage(0.1, PolutionArea);
+        while (collisionArea) {
+          receiveDamage(0.1, PolutionArea);
+          if (collisionArea == false) {
+            break;
+          }
+        }
+
+        if (life <= 0) {
+          removeFromParent();
+        }
       }
     });
 
