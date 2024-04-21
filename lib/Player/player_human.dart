@@ -3,13 +3,13 @@ import 'package:angola_sustentavel/Decorations/polution_area.dart';
 import 'package:angola_sustentavel/Decorations/reforestation.dart';
 import 'package:angola_sustentavel/Player/game_player_sprite.dart';
 import 'package:angola_sustentavel/Utils/game_button.dart';
-// import 'package:angola_sustentavel/Utils/game_button.dart';
+import 'package:angola_sustentavel/Utils/game_button.dart';
 import 'package:bonfire/bonfire.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
-// import 'package:flutter/widgets.dart';
 class PlayerHuman extends SimplePlayer with ObjectCollision {
   bool collisionArea = false;
   bool alreadyShowedWinDialog = false;
@@ -48,10 +48,20 @@ class PlayerHuman extends SimplePlayer with ObjectCollision {
       _showWinDialog(context);
     }
 
+    //Contaminated area
     seeComponentType<PolutionArea>(observed: (PolutionArea) {
       if (!collisionArea) {
         collisionArea = true;
-        receiveDamage(0.1, PolutionArea);
+        while (collisionArea) {
+          receiveDamage(0.1, PolutionArea);
+          if (collisionArea = false) {
+            break;
+          }
+        }
+
+        if (life <= 0) {
+          removeFromParent();
+        }
       }
     });
 
