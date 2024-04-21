@@ -402,6 +402,26 @@ class TrashCollectables12 extends GameDecoration
           width: 9,
           height: 32,
         );
+
+  @override
+  void update(double dt) {
+    seeComponentType<TrashCan>(
+      observed: (TrashCan) {
+        if (!objectTrashIsClose) {
+          objectTrashIsClose = true;
+          removeFromParent();
+          print("The trash object was colected");
+          trashcollected_count.value++;
+          print("Trach collected: " + trashcollected_count.value.toString());
+        }
+      },
+      notObserved: () {
+        objectTrashIsClose = false;
+      },
+      radiusVision: 5,
+    );
+    super.update(dt);
+  }
 }
 
 class TrashCollectables18 extends GameDecoration

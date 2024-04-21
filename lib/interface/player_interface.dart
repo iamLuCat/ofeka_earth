@@ -104,7 +104,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
               valueListenable: ReforestationTrees.treeCollected,
               builder: (context, value, child) {
                 return Text(
-                  '$value/20',
+                  '$value/16',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -120,7 +120,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
               valueListenable: trashcollected_count,
               builder: (context, value, child) {
                 return Text(
-                  '$value/20',
+                  '$value/15',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -248,7 +248,7 @@ class _PlayerInterfaceState extends State<PlayerInterface> {
             side: BorderSide(color: AppColors.yellowColor, width: 3.0),
           ),
           content: ClipRRect(
-            borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(5),
               child: Image.asset(imagePath)),
           actions: <Widget>[
             Center(

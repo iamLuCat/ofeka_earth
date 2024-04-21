@@ -1,4 +1,4 @@
-import 'package:angola_sustentavel/NPCS/ngola_friends_sprite_sheet.dart';
+import 'package:angola_sustentavel/NPCS/villagers/ngola_friends_sprite_sheet.dart';
 import 'package:angola_sustentavel/Player/game_player_sprite.dart';
 import 'package:bonfire/bonfire.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

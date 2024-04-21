@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:angola_sustentavel/Utils/app_colors.dart';
 import 'package:angola_sustentavel/Utils/diagonal_path_clipper.dart';
 import 'package:angola_sustentavel/Utils/game_button.dart';
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:angola_sustentavel/main.dart';
@@ -137,7 +137,7 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
   Widget _buildBody() {
     String play = AppLocalizations.of(context)!.play;
     String wallet = AppLocalizations.of(context)!.make_donation;
-    String options = AppLocalizations.of(context)!.options;
+    // String options = AppLocalizations.of(context)!.options;
     String quit = AppLocalizations.of(context)!.quit;
 
     return Center(
@@ -187,13 +187,13 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
   }
 
   // Change the size between the button when we have a different orientation screen
-  EdgeInsets _getPadding(BuildContext context) {
-    if (MediaQuery.of(context).orientation == Orientation.landscape) {
-      // Horizontal orientation
-      return const EdgeInsets.only(top: 40);
-    } else {
-      // Vertical Orientation
-      return const EdgeInsets.only(top: 250);
-    }
-  }
+  // EdgeInsets _getPadding(BuildContext context) {
+  //   if (MediaQuery.of(context).orientation == Orientation.landscape) {
+  //     // Horizontal orientation
+  //     return const EdgeInsets.only(top: 40);
+  //   } else {
+  //     // Vertical Orientation
+  //     return const EdgeInsets.only(top: 250);
+  //   }
+  // }
 }
