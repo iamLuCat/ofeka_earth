@@ -1,25 +1,32 @@
-import 'dart:io';
+import 'package:angola_sustentavel/game_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:angola_sustentavel/game_menu.dart';
+import 'package:angola_sustentavel/Utils/app_colors.dart';
+import 'package:angola_sustentavel/Utils/diagonal_path_clipper.dart';
 
-class SplachScreenGame extends StatefulWidget {
-  const SplachScreenGame({Key? key}) : super(key: key);
+class SplashScreenGame extends StatefulWidget {
+  const SplashScreenGame({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
-  _SplachScreenGameState createState() => _SplachScreenGameState();
+  _SplashScreenGameState createState() => _SplashScreenGameState();
 }
 
-class _SplachScreenGameState extends State<SplachScreenGame>
+class _SplashScreenGameState extends State<SplashScreenGame>
     with WidgetsBindingObserver, SingleTickerProviderStateMixin {
-  late String _backgroundImage;
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    Future.delayed(const Duration(seconds: 10), () {
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    );
+    _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
+    _controller.forward();
+    Future.delayed(const Duration(seconds: 6), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => const MenuGame()),
       );
@@ -32,33 +39,87 @@ class _SplachScreenGameState extends State<SplachScreenGame>
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
     WidgetsBinding.instance.removeObserver(this);
+    _controller.dispose();
     super.dispose();
-  }
-
-  void _setBackgroundImage(BuildContext context) {
-    //Check if the orientation of the screen currenctle
-    if (MediaQuery.of(context).orientation == Orientation.landscape) {
-      _backgroundImage = 'assets/splach_screen_orzontal_writen.png';
-    } else {
-      if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
-        _backgroundImage = 'assets/splachscreengame_windows.png';
-      } else {
-        _backgroundImage = 'assets/splachscreengame.png';
-      }
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    _setBackgroundImage(context); // Move your logic here
+    final orientation = MediaQuery.of(context).orientation;
+    final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(_backgroundImage),
-            fit: BoxFit.cover,
-          ),
-        ),
+      backgroundColor: AppColors.redColor,
+      body: AnimatedBuilder(
+        animation: _animation,
+        builder: (context, _) {
+          return Stack(
+            children: [
+              Opacity(
+                opacity: _animation.value,
+                child: ClipPath(
+                  clipper: DiagonalPathClipper(),
+                  child: Container(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              Transform.translate(
+                offset: Offset(0.0, 200 * (1 - _animation.value)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: (orientation == Orientation.portrait ? height * 0.2 : height * 0.02) * _animation.value),
+                    Opacity(
+                      opacity: _animation.value,
+                      child: Text(
+                        'Ofeka Earth',
+                        style: TextStyle(color: Colors.white, fontSize: 35),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Opacity(
+                      opacity: _animation.value,
+                      child: SizedBox(
+                        width: (orientation == Orientation.portrait) ? 150 : 100,
+                        height: (orientation == Orientation.portrait) ? 150 : 100,
+                        child: Image.asset(
+                          'assets/icones/logo_game.png',
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: (orientation == Orientation.portrait ? height / 3.5 : height / 10) * _animation.value),
+                    Center(
+                      child: Opacity(
+                        opacity: _animation.value,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: Text(
+                            'PROTECT THE EARTH\nAGAINST CLIMATE CHANGES',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 50 * _animation.value),
+                    Opacity(
+                      opacity: _animation.value,
+                      child: Text(
+                        '#OFEKAEARTH',
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

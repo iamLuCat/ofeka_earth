@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
       locale: _locale,
-      home: const SplachScreenGame(),
+      home: const SplashScreenGame(),
       routes: {
         '/level01': (context) => const MyHomePage(),
         '/wallet': (context) => const MyDonations(),
