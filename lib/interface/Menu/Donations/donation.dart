@@ -1,13 +1,10 @@
+import 'package:angola_sustentavel/Utils/app_colors.dart';
+import 'package:angola_sustentavel/Utils/ofeka_circle_button.dart';
+import 'package:angola_sustentavel/interface/Menu/shop_page.dart';
 import 'package:angola_sustentavel/interface/pay_wallet.dart';
-import 'package:angola_sustentavel/interface/Menu/Donations/social_causes.dart';
+import 'package:angola_sustentavel/interface/Menu/Donations/Socials%20Causes/social_causes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MaterialApp(
-    home: MyDonations(),
-  ));
-}
 
 class MyDonations extends StatelessWidget {
   const MyDonations({
@@ -17,10 +14,28 @@ class MyDonations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black.withOpacity(0.9),
       appBar: AppBar(
+        centerTitle: true,
         title: Text(AppLocalizations.of(context)!.donationsbar),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: OfekaCircleButton(
+            size: 35,
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+              size: 25,
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.only(bottom: 20),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +60,7 @@ class MyDonations extends StatelessWidget {
                   // Navegar para a página de loja
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DonationCauses()),
+                    MaterialPageRoute(builder: (context) => SocialCauses()),
                   );
                 },
                 child: _buildCard(
@@ -72,8 +87,7 @@ class MyDonations extends StatelessWidget {
               const Text(
                 '#MIRABILISGAMESTUDIO',
                 style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -86,16 +100,17 @@ class MyDonations extends StatelessWidget {
 
   Widget _buildCard(BuildContext context, String imagePath, String title) {
     return Container(
-      width: 200,
-      height: 200,
+      width: 190,
+      height: 190,
       margin: const EdgeInsets.only(
           bottom: 20), // Adicionando margem apenas na parte inferior do cartão
       decoration: BoxDecoration(
         color: const Color(0xFF202020),
         borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppColors.yellowColor, width: 3),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Colors.black.withOpacity(0.5),
             spreadRadius: 5,
             blurRadius: 7,
             offset: const Offset(0, 3), // changes position of shadow
@@ -109,6 +124,7 @@ class MyDonations extends StatelessWidget {
             imagePath,
             width: 70,
             height: 70,
+            fit: BoxFit.cover,
           ),
           const SizedBox(height: 10),
           Text(
@@ -120,54 +136,6 @@ class MyDonations extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ShopPage extends StatelessWidget {
-  const ShopPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.shop_page),
-      ),
-      body: Center(
-        child: Center(
-          child: Text(
-            AppLocalizations.of(context)!.shop_page_title,
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MySocaialCausePage extends StatelessWidget {
-  final String title;
-
-  const MySocaialCausePage({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('SOCIAL CAUSES'),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 20),
-            Text('BE PART OF REVOLUATION'),
-          ],
-        ),
       ),
     );
   }

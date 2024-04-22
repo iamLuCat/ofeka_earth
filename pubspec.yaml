@@ -40,6 +40,7 @@ dependencies:
   add_to_google_wallet: ^0.0.3
   uuid: ^3.0.0
   responsive_builder: ^0.7.0
+  animated_text_kit: ^4.2.2
   # google_fonts: ^2.3.3
   # flame_audio: ^1.1.0
 
@@ -47,6 +48,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: "^0.13.1"
+  build_runner: ^2.4.9
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -83,6 +85,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/audio/
+    - assets/images/
     - assets/images/map/
     - assets/images/map/trashimages/
     - assets/images/map/farm_plants/

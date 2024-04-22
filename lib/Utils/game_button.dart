@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class GameButton extends StatelessWidget {
   final String text;
+  final TextStyle? textStyle;
   final double? height;
   final double? width;
   final VoidCallback? onPressed;
@@ -11,7 +12,8 @@ class GameButton extends StatelessWidget {
     required this.text,
     this.height,
     this.width,
-    this.onPressed
+    this.onPressed,
+    this.textStyle
   });
 
   @override
@@ -30,7 +32,7 @@ class GameButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: const TextStyle(
+          style: textStyle ?? const TextStyle(
             fontSize: 20,
             color: Colors.black,
           ),
