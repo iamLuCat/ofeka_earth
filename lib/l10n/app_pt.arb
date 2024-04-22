@@ -43,6 +43,15 @@
 
     "cause1": "Lidando com a desertificação no sul de Angola",
     "cause2": "O dilema das substâncias plásticas em Namibe",
-    "cause3": "Queima de árvores"
+    "cause3": "Queima de árvores",
 
+    "quit_confirmation": "Tem certeza de que deseja sair?",
+    "yes_button": "Sim",
+    "no_button": "Não",
+
+    "congrats_title": "Parabéns!",
+    "win_title": "Você venceu o jogo!",
+    "tree_replaced": "ÁRVORES SUBSTITUÍDAS",
+    "waste_collected": "RESÍDUOS COLETADOS",
+    "continue_title": "Continuar"
 }

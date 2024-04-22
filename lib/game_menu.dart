@@ -3,6 +3,7 @@ import 'package:angola_sustentavel/Utils/app_colors.dart';
 import 'package:angola_sustentavel/Utils/diagonal_path_clipper.dart';
 import 'package:angola_sustentavel/Utils/game_button.dart';
 import 'package:angola_sustentavel/Utils/ofeka_circle_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:angola_sustentavel/main.dart';
@@ -137,9 +138,7 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
             bottom: 50,
             child: Text(
               '#OFEKAEARTH',
-              style: TextStyle(
-                color: Colors.white
-              ),
+              style: TextStyle(color: Colors.white),
               textAlign: TextAlign.center,
             ),
           )
@@ -152,7 +151,6 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
     String play = AppLocalizations.of(context)!.play;
     String wallet = AppLocalizations.of(context)!.make_donation;
     String quit = AppLocalizations.of(context)!.quit;
-
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -191,11 +189,55 @@ class _MenuGameState extends State<MenuGame> with WidgetsBindingObserver {
             Navigator.pushNamed(context, route);
           } else {
             if (text == AppLocalizations.of(context)!.quit) {
-              exit(0); // Quit the application
+              _showQuitDialog();
             }
           }
         },
       ),
+    );
+  }
+
+  void _showQuitDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Center(
+              child: Text(
+            AppLocalizations.of(context)!.quit_confirmation,
+            textAlign: TextAlign.center,
+          )),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: AppColors.yellowColor, width: 3.0),
+          ),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                flex: 1,
+                child: GameButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  text: AppLocalizations.of(context)!.no_button,
+                ),
+              ),
+              const SizedBox(width: 20),
+              Flexible(
+                flex: 1,
+                child: GameButton(
+                  onPressed: () {
+                    exit(0);
+                  },
+                  text: AppLocalizations.of(context)!.yes_button,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

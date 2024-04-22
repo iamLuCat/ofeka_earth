@@ -43,5 +43,15 @@
 
     "cause1": "南アンゴラの砂漠化に対処する",
     "cause2": "ナミベのプラスチック物質のジレンマ",
-    "cause3": "木の焼却"
+    "cause3": "木の焼却",
+
+    "quit_confirmation": "終了してもよろしいですか？",
+    "yes_button": "はい",
+    "no_button": "いいえ",
+
+    "congrats_title": "おめでとうございます！",
+    "win_title": "ゲームに勝ちました！",
+    "tree_replaced": "木が置き換えられました",
+    "waste_collected": "ごみが収集されました",
+    "continue_title": "続行"
 }

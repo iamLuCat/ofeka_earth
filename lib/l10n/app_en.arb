@@ -42,5 +42,15 @@
 
     "cause1": "Dealing with desertification in southern Angola",
     "cause2": "The dilemma of plastic substances in Namibe",
-    "cause3": "Burning of trees"
+    "cause3": "Burning of trees",
+
+    "quit_confirmation": "Are you sure you want to quit?",
+    "yes_button": "Yes",
+    "no_button": "No",
+
+    "congrats_title": "Congratulations!",
+    "win_title": "You won the game!",
+    "tree_replaced": "TREES REPLACED",
+    "waste_collected": "WASTE COLLECTED",
+    "continue_title": "Continue"
 }
